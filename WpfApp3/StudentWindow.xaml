@@ -5,68 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="Student Dashboard" Height="600" Width="1000"
+        Title="Student Dashboard" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Style TargetType="Button" x:Key="NavButton">
-            <Setter Property="Background" Value="#2196F3"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="15 10"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="#1976D2" 
-                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                Duration="0:0:0.2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="#2196F3" 
-                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                Duration="0:0:0.2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Navigation Panel -->
-        <StackPanel Grid.Column="0" Background="#F5F5F5">
-            <TextBlock Text="Student Portal" FontSize="18" FontWeight="Bold" Margin="10"/>
-            <Button Content="🕒 Time In" Style="{StaticResource NavButton}" Click="NavButton_Click"/>
-            <Button Content="🕒 Time Out" Style="{StaticResource NavButton}" Click="NavButton_Click"/>
-            <Button Content="📚 Borrow Books" Style="{StaticResource NavButton}" Click="NavButton_Click"/>
-            <Button Content="📚 Return Books" Style="{StaticResource NavButton}" Click="NavButton_Click"/>
-        </StackPanel>
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
+            <StackPanel>
+                <Border Background="{StaticResource SecondaryBrush}" Padding="20">
+                    <TextBlock Text="Student Portal" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                </Border>
 
-        <!-- Content Area -->
-        <Border Grid.Column="1" Margin="20" Background="White" 
-                CornerRadius="5" Padding="20">
-            <ContentControl x:Name="MainContent">
-                <StackPanel>
-                    <TextBlock Text="Welcome Student!" FontSize="24" Foreground="#333"/>
-                    <TextBlock Text="Select an option from the left menu" 
-                             Margin="0 20 0 0" Foreground="#666"/>
-                </StackPanel>
-            </ContentControl>
+                <Button Style="{StaticResource ModernButton}" Content="📚 Available Books" Margin="10" Click="NavButton_Click" Tag="AvailableBooks"/>
+                <Button Style="{StaticResource ModernButton}" Content="📖 Borrow Books" Margin="10" Click="NavButton_Click" Tag="BorrowBooks"/>
+                <Button Style="{StaticResource ModernButton}" Content="⏱️ Library Visits" Margin="10" Click="NavButton_Click" Tag="LibraryVisits"/>
+
+                <Button Style="{StaticResource ModernButton}" Content="🚪 Logout" Margin="10 50 10 10" Click="Logout_Click"/>
+            </StackPanel>
         </Border>
 
-        <!-- Logout Button -->
-        <Button Content="🚪 Logout" HorizontalAlignment="Right" VerticalAlignment="Top"
-                Margin="10" Padding="10 5" Click="btnLogout_Click" Style="{StaticResource NavButton}"
-                Grid.Column="1"/>
+        <!-- Content Area -->
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

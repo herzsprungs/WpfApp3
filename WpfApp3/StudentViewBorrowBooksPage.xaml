@@ -1,0 +1,22 @@
+﻿<Page x:Class="WpfApp3.StudentViewBorrowBooksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentViewBorrowBooksPage">
+
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Current Borrowings" FontSize="18" Margin="0 0 0 20"/>
+            <DataGrid ItemsSource="{Binding BorrowedBooks}">
+                <!-- Similar columns to AvailableBooksPage -->
+            </DataGrid>
+            <Button Content="Request New Borrowing" 
+                  Margin="0 20" Padding="15 8"
+                  HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Page>

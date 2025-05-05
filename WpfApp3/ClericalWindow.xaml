@@ -5,41 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="Clerical Dashboard" Height="600" Width="1000"
+        Title="Clerical Dashboard" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- Top Navigation -->
-        <WrapPanel Grid.Row="0" Background="#4CAF50" >
-            <Button Content="📖 Available Books"  
-                    Margin="5" Click="NavButton_Click"/>
-            <Button Content="📊 Compile Reports" 
-                    Margin="5" Click="NavButton_Click"/>
-            <Button Content="💰 Calculate Fines" 
-                    Margin="5" Click="NavButton_Click"/>
-        </WrapPanel>
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
+            <StackPanel>
+                <Border Background="{StaticResource SecondaryBrush}" Padding="20">
+                    <TextBlock Text="Clerical Portal" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                </Border>
+
+                <Button Style="{StaticResource ModernButton}" Content="📚 Manage Books" Margin="10" Click="NavButton_Click" Tag="ManageBooks"/>
+                <Button Style="{StaticResource ModernButton}" Content="💳 Process Loans" Margin="10" Click="NavButton_Click" Tag="ProcessLoans"/>
+                <Button Style="{StaticResource ModernButton}" Content="⏱ Time Tracking" Margin="10" Click="NavButton_Click" Tag="TimeTracking"/>
+
+                <Button Style="{StaticResource ModernButton}" Content="🚪 Logout" Margin="10 50 10 10" Click="Logout_Click"/>
+            </StackPanel>
+        </Border>
 
         <!-- Content Area -->
-        <TabControl Grid.Row="1" Margin="20">
-            <TabItem Header="Dashboard">
-                <Grid>
-                    <TextBlock Text="Clerical Operations Center" HorizontalAlignment="Center"
-                               VerticalAlignment="Center" FontSize="24"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Statistics">
-                <Grid>
-                    <!-- Add charts/grids here later -->
-                </Grid>
-            </TabItem>
-        </TabControl>
-
-        <!-- Logout -->
-        <Button Content="🚪 Logout" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"
-                Margin="10" Padding="10 5" Click="btnLogout_Click" />
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

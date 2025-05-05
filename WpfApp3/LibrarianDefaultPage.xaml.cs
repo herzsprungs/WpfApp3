@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp3
 {
     /// <summary>
-    /// Interaction logic for LibrarianPage.xaml
+    /// Interaction logic for LibrarianDefaultPage.xaml
     /// </summary>
-    public partial class LibrarianPage : Window
+    public partial class LibrarianDefaultPage : Page
     {
-        public LibrarianPage()
+        public LibrarianDefaultPage()
         {
             InitializeComponent();
         }

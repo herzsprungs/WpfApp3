@@ -4,6 +4,76 @@
              xmlns:local="clr-namespace:WpfApp3"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Colors -->
+        <Color x:Key="PrimaryColor">#2C3E50</Color>
+        <Color x:Key="SecondaryColor">#34495E</Color>
+        <Color x:Key="AccentColor">#3498DB</Color>
+
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+
+        <!-- Button Style -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15 8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2980B9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- GroupBox Style -->
+        <Style x:Key="ModernGroupBox" TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="#BDC3C7"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource PrimaryBrush}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+     
+
+        <Style x:Key="GridActionButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#95a5a6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="8 3"/>
+        </Style>
+
+        <!-- Calendar Style -->
+        <Style x:Key="ModernCalendar" TargetType="Calendar">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#ECF0F1"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- Shadow Effect -->
+       
+        
+        
+        
+
     </Application.Resources>
 </Application>

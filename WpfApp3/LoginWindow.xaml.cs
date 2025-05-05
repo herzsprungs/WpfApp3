@@ -23,5 +23,24 @@ namespace WpfApp3
         {
             InitializeComponent();
         }
+        // Testing buttons handlers
+        private void StudentTest_Click(object sender, RoutedEventArgs e)
+        {
+            new StudentWindow().Show();
+            this.Close();
+        }
+
+        private void ClericalTest_Click(object sender, RoutedEventArgs e)
+        {
+            new ClericalWindow().Show();
+            this.Close();
+        }
+
+        private void LibrarianTest_Click(object sender, RoutedEventArgs e)
+        {
+            new LibrarianWindow().Show();
+            this.Close();
+        }
+
     }
 }

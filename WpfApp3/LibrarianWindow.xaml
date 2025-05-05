@@ -1,0 +1,69 @@
+﻿<Window x:Class="WpfApp3.LibrarianWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="LibrarianWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
+            <StackPanel>
+                <Border Background="{StaticResource SecondaryBrush}" Padding="20">
+                    <TextBlock Text="Librarian Portal" 
+                             Foreground="White" 
+                             FontSize="18" 
+                             FontWeight="Bold"/>
+                </Border>
+
+                <!-- Navigation Buttons -->
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="👥 Manage Users"
+                      Click="NavButton_Click"
+                      Tag="Users"
+                      Margin="10"/>
+
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="📚 Manage Books"
+                      Click="NavButton_Click"
+                      Tag="Books"
+                      Margin="10"/>
+
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="🎓 Manage Students"
+                      Click="NavButton_Click"
+                      Tag="Students"
+                      Margin="10"/>
+
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="📑 Manage Courses"
+                      Click="NavButton_Click"
+                      Tag="Courses"
+                      Margin="10"/>
+
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="💳 Transactions"
+                      Click="NavButton_Click"
+                      Tag="Transactions"
+                      Margin="10"/>
+
+                <!-- Logout Button -->
+                <Button Style="{StaticResource ModernButton}" 
+                      Content="🚪 Logout"
+                      Click="Logout_Click"
+                      Margin="10 50 10 10"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Content Area -->
+        <Frame x:Name="MainFrame" 
+             Grid.Column="1" 
+             NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

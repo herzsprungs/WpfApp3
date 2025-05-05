@@ -56,6 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClericalDefaultPage.xaml.cs">
+      <DependentUpon>ClericalDefaultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClericalViewLibraryTimeInTimeOut.xaml.cs">
+      <DependentUpon>ClericalViewLibraryTimeInTimeOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClericalViewsManageBooksPage.xaml.cs">
+      <DependentUpon>ClericalViewsManageBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClericalViewsTransactionPage.xaml.cs">
+      <DependentUpon>ClericalViewsTransactionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClericalWindow.xaml.cs">
       <DependentUpon>ClericalWindow.xaml</DependentUpon>
     </Compile>
@@ -64,17 +76,94 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LibrarianPage.xaml.cs">
-      <DependentUpon>LibrarianPage.xaml</DependentUpon>
+    <Compile Include="LibrarianAdminBooksCRUDpage.xaml.cs">
+      <DependentUpon>LibrarianAdminBooksCRUDpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianAdminCourseCRUDpage.xaml.cs">
+      <DependentUpon>LibrarianAdminCourseCRUDpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianAdminStudentsCRUDpage.xaml.cs">
+      <DependentUpon>LibrarianAdminStudentsCRUDpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianAdminTransactionCRUDpage.xaml.cs">
+      <DependentUpon>LibrarianAdminTransactionCRUDpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianAdminUsersCRUDpage.xaml.cs">
+      <DependentUpon>LibrarianAdminUsersCRUDpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianDashboardPage.xaml.cs">
+      <DependentUpon>LibrarianDashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianDefaultPage.xaml.cs">
+      <DependentUpon>LibrarianDefaultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianWindow.xaml.cs">
+      <DependentUpon>LibrarianWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDefaultPage.xaml.cs">
+      <DependentUpon>StudentDefaultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentViewAvailableBooksPage.xaml.cs">
+      <DependentUpon>StudentViewAvailableBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentViewBorrowBooksPage.xaml.cs">
+      <DependentUpon>StudentViewBorrowBooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentViewsLibraryVisitPage.xaml.cs">
+      <DependentUpon>StudentViewsLibraryVisitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ClericalDefaultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClericalViewLibraryTimeInTimeOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClericalViewsManageBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClericalViewsTransactionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClericalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LibrarianPage.xaml">
+    <Page Include="LibrarianAdminBooksCRUDpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianAdminCourseCRUDpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianAdminStudentsCRUDpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianAdminTransactionCRUDpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianAdminUsersCRUDpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianDashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianDefaultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,6 +186,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StudentDefaultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentViewAvailableBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentViewBorrowBooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentViewsLibraryVisitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +243,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="titlenorthville.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logintitleWithLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

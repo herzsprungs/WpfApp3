@@ -22,6 +22,30 @@ namespace WpfApp3
         public StudentWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new StudentViewAvailableBooksPage());
+        }
+
+        private void NavButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            switch (button.Tag.ToString())
+            {
+                case "AvailableBooks":
+                    MainFrame.Navigate(new StudentViewAvailableBooksPage());
+                    break;
+                case "BorrowBooks":
+                    MainFrame.Navigate(new StudentViewBorrowBooksPage());
+                    break;
+                case "LibraryVisits":
+                    MainFrame.Navigate(new StudentViewsLibraryVisitPage());
+                    break;
+            }
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            new LoginWindow().Show();
+            this.Close();
         }
     }
 }

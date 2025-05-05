@@ -1,0 +1,44 @@
+﻿<Page x:Class="WpfApp3.LibrarianAdminStudentsCRUDpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LibrarianAdminStudentsCRUDpage">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Filters -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <ComboBox x:Name="cmbCourseFilter" Width="200" Margin="5" SelectedIndex="0">
+                <ComboBoxItem Content="All Courses"/>
+                <ComboBoxItem Content="Computer Science"/>
+                <ComboBoxItem Content="Engineering"/>
+            </ComboBox>
+            <Button Content="ADD STUDENT" Style="{StaticResource ModernButton}" Width="150"/>
+        </StackPanel>
+
+        <!-- Data Grid -->
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding StudentId}" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding FullName}" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding Course}" Width="2*"/>
+                <DataGridTextColumn Binding="{Binding Status}" Width="1*"/>
+                <DataGridTemplateColumn Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="VIEW DETAILS" Style="{StaticResource GridActionButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

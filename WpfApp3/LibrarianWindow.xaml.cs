@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace WpfApp3
 {
     /// <summary>
-    /// Interaction logic for ClericalWindow.xaml
+    /// Interaction logic for LibrarianWindow.xaml
     /// </summary>
-    public partial class ClericalWindow : Window
+    public partial class LibrarianWindow : Window
     {
-        public ClericalWindow()
+        public LibrarianWindow()
         {
             InitializeComponent();
-            NavigateToPage("ManageBooks");
+            NavigateToPage("Users"); // Default page
         }
 
         private void NavButton_Click(object sender, RoutedEventArgs e)
@@ -35,18 +35,20 @@ namespace WpfApp3
         {
             switch (pageName)
             {
-                case "ManageBooks":
-                    MainFrame.Navigate(new ClericalViewsManageBooksPage());
+                case "Users":
+                    MainFrame.Navigate(new LibrarianAdminUsersCRUDpage());
+                    break;
+                case "Books":
+                    MainFrame.Navigate(new LibrarianAdminBooksCRUDpage());
+                    break;
+                case "Students":
+                    MainFrame.Navigate(new LibrarianAdminStudentsCRUDpage());
+                    break;
+                case "Courses":
+                    MainFrame.Navigate(new LibrarianAdminCourseCRUDpage());
                     break;
                 case "Transactions":
-                    MainFrame.Navigate(new ClericalViewsTransactionPage());
-                    break;
-                case "CheckAvailability":
-                    MainFrame.Navigate(new StudentViewAvailableBooksPage());
-                    break;
-
-                case "TimeTracking":
-                    MainFrame.Navigate(new ClericalViewLibraryTimeInTimeOut());
+                    MainFrame.Navigate(new LibrarianAdminTransactionCRUDpage());
                     break;
             }
         }
