@@ -38,7 +38,7 @@ namespace WpfApp3
                 case "ManageBooks":
                     MainFrame.Navigate(new ClericalViewsManageBooksPage());
                     break;
-                case "Transactions":
+                case "Analytics":
                     MainFrame.Navigate(new ClericalViewsTransactionPage());
                     break;
                 case "CheckAvailability":

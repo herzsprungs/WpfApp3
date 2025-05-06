@@ -56,7 +56,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <MediaElement Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
+        <MediaElement Source="C:\Users\23-0144c\Downloads\7513671-uhd_3840_2160_24fps (1).mp4" 
              Margin="-426,-384,262,-353" 
              Grid.ColumnSpan="2">
             <MediaElement.Effect>
@@ -67,7 +67,7 @@
 
         <!-- Right Side - Login Form -->
         <Grid Grid.Column="1" Background="White">
-            <StackPanel VerticalAlignment="Center" Margin="40">
+           
                 <TextBlock Text="Welcome Back!" 
                          FontSize="24" FontWeight="SemiBold"
                          Foreground="#FF24313E" Margin="0 0 0 30"
@@ -86,10 +86,8 @@
                              Tag="Password"
                              Margin="0 0 0 30"/>
 
-                <Button x:Name="btnLogin" Content="Sign In" 
-                       
-                       HorizontalAlignment="Stretch"/>
-            </StackPanel>
+                <Button x:Name="btnLogin" Content="Sign In" Margin="0,310,0,0"/>
+            
 
             <!-- Animated Border Effect -->
             <Border BorderBrush="White" BorderThickness="0 0 0 3"

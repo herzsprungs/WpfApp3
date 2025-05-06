@@ -5,65 +5,228 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="LibrarianWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        Title="LibrarianWindow" Height="650" 
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResize">
 
-        <!-- Sidebar -->
-        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
-            <StackPanel>
-                <Border Background="{StaticResource SecondaryBrush}" Padding="20">
-                    <TextBlock Text="Librarian Portal" 
-                             Foreground="White" 
-                             FontSize="18" 
-                             FontWeight="Bold"/>
+    <Window.Resources>
+        <!-- Modern Button Style -->
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#2980b9"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="8" 
+                                Padding="{TemplateBinding Padding}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1c638b"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#154a6a"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Active Button Style -->
+        <Style x:Key="ActiveButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="#27ae60"/>
+        </Style>
+
+        <!-- Window Control Button Style -->
+        <Style x:Key="WindowControlButton" TargetType="Button">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#33ffffff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="15" Background="#f0f6f9">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar with video background -->
+            <Border CornerRadius="15,0,0,15" ClipToBounds="True">
+                <Grid>
+                    <!-- Background Video with Blur -->
+                    <MediaElement x:Name="BackgroundVideo" 
+                                  Source="C:\Users\23-0144c\Downloads\7513671-uhd_3840_2160_24fps (1).mp4" 
+                                  Stretch="UniformToFill"
+                                  LoadedBehavior="Play"
+                                  Volume="0">
+                        <MediaElement.Effect>
+                            <BlurEffect Radius="10" />
+                        </MediaElement.Effect>
+                    </MediaElement>
+
+                    <!-- Dark Overlay for better readability -->
+                    <Border Background="#90000000"/>
+
+                    <!-- Sidebar Content -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Logo and Title -->
+                        <StackPanel VerticalAlignment="Center" Margin="20,20,20,10">
+                            <TextBlock Text="LIBRARIAN" FontWeight="Bold" FontSize="22" Foreground="White"/>
+                            <TextBlock Text="Management System" FontSize="14" Foreground="#ccffffff" Margin="0,5,0,0"/>
+                        </StackPanel>
+
+                        <!-- Navigation Menu -->
+                        <StackPanel Grid.Row="1" Margin="15,10">
+                            <TextBlock Text="MANAGEMENT" Foreground="#99ffffff" FontSize="12" Margin="5,0,0,15"/>
+
+                            <Button Style="{StaticResource ModernButton}" 
+                                    Content="📑  Manage Courses" 
+                                    Margin="0,8" 
+                                    Tag="Courses"
+                                    Click="NavButton_Click"
+                                    x:Name="CoursesButton"/>
+
+                            <Button Style="{StaticResource ModernButton}" 
+                                    Content="👥  Manage Users" 
+                                    Margin="0,8" 
+                                    Tag="Users"
+                                    Click="NavButton_Click"
+                                    x:Name="UsersButton"/>
+
+                            <Button Style="{StaticResource ModernButton}" 
+                                    Content="💳  Transactions" 
+                                    Margin="0,8" 
+                                    Tag="Transactions"
+                                    Click="NavButton_Click"
+                                    x:Name="TransactionsButton"/>
+
+                            <Button Style="{StaticResource ModernButton}" 
+                                    Content="📚  Manage Books" 
+                                    Margin="0,8" 
+                                    Tag="Books"
+                                    Click="NavButton_Click"
+                                    x:Name="BooksButton"/>
+
+                            <Button Style="{StaticResource ModernButton}" 
+                                    Content="🎓  Manage Students" 
+                                    Margin="0,8" 
+                                    Tag="Students"
+                                    Click="NavButton_Click"
+                                    x:Name="StudentsButton"/>
+                        </StackPanel>
+
+                        <!-- Logout Button -->
+                        <Button Grid.Row="2" 
+                                Style="{StaticResource ModernButton}" 
+                                Content="🚪  Logout" 
+                                Background="#e74c3c"
+                                Click="Logout_Click"
+                                Margin="15,0,15,25"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Main Content Area -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Top Bar -->
+                <Border Background="Transparent" BorderThickness="0,0,0,1" BorderBrush="#20000000">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Page Title -->
+                        <TextBlock x:Name="PageTitle" 
+                                   Text="Librarian Portal" 
+                                   FontSize="20" 
+                                   FontWeight="SemiBold" 
+                                   VerticalAlignment="Center"
+                                   Margin="20,0"/>
+
+                        <!-- Librarian Info -->
+                        <StackPanel Grid.Column="1" 
+                                    Orientation="Horizontal" 
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,20,0">
+                            <Ellipse Width="32" Height="32">
+                                <Ellipse.Fill>
+                                    <SolidColorBrush Color="#2980b9"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Librarian" 
+                                       VerticalAlignment="Center" 
+                                       Margin="10,0,0,0"
+                                       FontWeight="Medium"/>
+                        </StackPanel>
+
+                        
+                    </Grid>
                 </Border>
 
-                <!-- Navigation Buttons -->
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="👥 Manage Users"
-                      Click="NavButton_Click"
-                      Tag="Users"
-                      Margin="10"/>
+                <!-- Main Content Frame -->
+                <Frame x:Name="MainFrame" 
+                       Grid.Row="1" 
+                       NavigationUIVisibility="Hidden"
+                       Margin="20"/>
+            </Grid>
 
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="📚 Manage Books"
-                      Click="NavButton_Click"
-                      Tag="Books"
-                      Margin="10"/>
-
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="🎓 Manage Students"
-                      Click="NavButton_Click"
-                      Tag="Students"
-                      Margin="10"/>
-
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="📑 Manage Courses"
-                      Click="NavButton_Click"
-                      Tag="Courses"
-                      Margin="10"/>
-
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="💳 Transactions"
-                      Click="NavButton_Click"
-                      Tag="Transactions"
-                      Margin="10"/>
-
-                <!-- Logout Button -->
-                <Button Style="{StaticResource ModernButton}" 
-                      Content="🚪 Logout"
-                      Click="Logout_Click"
-                      Margin="10 50 10 10"/>
-            </StackPanel>
-        </Border>
-
-        <!-- Content Area -->
-        <Frame x:Name="MainFrame" 
-             Grid.Column="1" 
-             NavigationUIVisibility="Hidden"/>
-    </Grid>
+            <!-- Make the top bar draggable -->
+            <Border Grid.Column="1" 
+                    Background="Transparent" 
+                    Height="60" 
+                    VerticalAlignment="Top" 
+                   />
+        </Grid>
+    </Border>
 </Window>

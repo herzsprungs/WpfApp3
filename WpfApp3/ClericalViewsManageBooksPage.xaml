@@ -8,34 +8,223 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClericalViewsManageBooksPage">
 
-    <Grid Margin="20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Add New Book" Margin="0 0 10 0" Padding="15 8"/>
-            <TextBox Width="300" Margin="10 0" Padding="10"/>
-            <Button Content="Search" Padding="15 8"/>
-        </StackPanel>
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#3F51B5" Padding="15">
+            <TextBlock Text="Manage Books" FontSize="22" FontWeight="SemiBold" Foreground="White"/>
+        </Border>
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Width="*"/>
-                <DataGridTextColumn Header="Author" Width="200"/>
-                <DataGridTextColumn Header="Available Copies" Width="120"/>
-                <DataGridTemplateColumn Header="Actions" Width="150">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Edit" Padding="10 5" Margin="0 0 5 0"/>
-                                <Button Content="Delete" Padding="10 5"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <!-- Search and Filter Section -->
+        <Grid Grid.Row="1" Margin="15,15,15,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+                    Background="White" 
+                    BorderBrush="#E0E0E0" 
+                    BorderThickness="1" 
+                    CornerRadius="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" 
+                               Text="🔍" 
+                               FontSize="16" 
+                               VerticalAlignment="Center" 
+                               Margin="10,0,5,0"/>
+
+                    <TextBox Grid.Column="1" 
+                             x:Name="SearchBox" 
+                             BorderThickness="0" 
+                             Padding="5" 
+                             FontSize="14"
+                             Background="Transparent"
+                             VerticalAlignment="Center"
+                             Margin="0,0,5,0"
+                             Text=""
+                             VerticalContentAlignment="Center"
+                             Foreground="#333333"
+                             Height="30">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+            </Border>
+
+            <ComboBox Grid.Column="1" 
+                      x:Name="FilterComboBox" 
+                      Margin="10,0,0,0" 
+                      Width="120" 
+                      Height="30"
+                      SelectedIndex="0">
+                <ComboBoxItem Content="All Books"/>
+                <ComboBoxItem Content="Available"/>
+                <ComboBoxItem Content="Checked Out"/>
+            </ComboBox>
+
+            <Button Grid.Column="2" 
+                    Content="Search" 
+                    Margin="10,0,0,0" 
+                    Padding="15,0" 
+                    Height="30"
+                    Background="#3F51B5"
+                    Foreground="White"
+                    BorderThickness="0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#303F9F"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#1A237E"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- DataGrid for Books -->
+        <Border Grid.Row="2" 
+                Margin="15,5,15,15" 
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1" 
+                CornerRadius="4"
+                Background="White">
+            <DataGrid x:Name="BooksDataGrid" 
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="True"
+                      CanUserSortColumns="True"
+                      AlternatingRowBackground="#F5F5F5"
+                      RowBackground="White"
+                      GridLinesVisibility="Horizontal"
+                      BorderThickness="0"
+                      VerticalGridLinesBrush="Transparent"
+                      HorizontalGridLinesBrush="#E0E0E0"
+                      HeadersVisibility="Column"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#F5F5F5"/>
+                        <Setter Property="Foreground" Value="#333333"/>
+                        <Setter Property="Padding" Value="10,8"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}" Width="120"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="150"/>
+                    <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Width="120"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/>
+                    <DataGridTemplateColumn Header="Actions" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Content="Edit" Margin="0,0,5,0" Padding="8,3" Background="#FFC107" BorderThickness="0" Foreground="White">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border Background="{TemplateBinding Background}" 
+                                                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                    CornerRadius="3">
+                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="#FFA000"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Add New Book Button -->
+        <Grid Grid.Row="3" Margin="15,0,15,15">
+            <Button Content="Add New Book" 
+                    HorizontalAlignment="Right"
+                    Padding="15,5" 
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Height="35">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#388E3C"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#1B5E20"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Grid>
 </Page>
