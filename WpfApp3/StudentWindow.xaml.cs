@@ -14,12 +14,10 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for StudentWindow.xaml
-    /// </summary>
+    
     public partial class StudentWindow : Window
     {
-        public string loggedInStudentId; // field to store student ID
+        public string loggedInStudentId; 
         public StudentWindow()
         {
             InitializeComponent();

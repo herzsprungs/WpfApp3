@@ -13,7 +13,7 @@
         Background="Transparent">
 
     <Window.Resources>
-        <!-- Elegant Button Style -->
+       
         <Style x:Key="ElegantButton" TargetType="Button">
             <Setter Property="Background" Value="#2C3E50"/>
             <Setter Property="Foreground" Value="White"/>
@@ -48,7 +48,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Elegant TextBox Style -->
+       
         <Style x:Key="ElegantTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="#F8F9FA"/>
             <Setter Property="BorderBrush" Value="#E9ECEF"/>
@@ -66,7 +66,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Elegant PasswordBox Style -->
+        
         <Style x:Key="ElegantPasswordBox" TargetType="PasswordBox">
             <Setter Property="Background" Value="#F8F9FA"/>
             <Setter Property="BorderBrush" Value="#E9ECEF"/>
@@ -84,7 +84,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Role Button Styles -->
+       
         <Style x:Key="RoleButton" TargetType="Button" BasedOn="{StaticResource ElegantButton}">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="15,8"/>
@@ -104,7 +104,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Left Side - Media & Logo -->
+           
             <Border Grid.Column="0" CornerRadius="10,0,0,10" ClipToBounds="True">
                 <Grid>
                     <MediaElement Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
@@ -118,10 +118,10 @@
                 </Grid>
             </Border>
 
-            <!-- Right Side - Login Form -->
+            
             <Border Grid.Column="1" CornerRadius="0,10,10,0" Background="White" Padding="40">
                 <Grid>
-                    <!-- Form Container -->
+                   
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Welcome Back" 
                                    FontSize="28" 
@@ -179,7 +179,7 @@
                             </Button.Effect>
                         </Button>
 
-                        <!-- Login Role Selection -->
+                       
                         <TextBlock Text="QUICK ACCESS" 
                                    FontSize="11" 
                                    FontWeight="SemiBold"

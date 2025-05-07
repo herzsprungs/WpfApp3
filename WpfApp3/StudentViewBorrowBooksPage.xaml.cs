@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for StudentViewBorrowBooksPage.xaml
-    /// </summary>
+    
     public partial class StudentViewBorrowBooksPage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
@@ -29,14 +27,14 @@ namespace WpfApp3
 
         private void ViewBorrowing_Click(object sender, RoutedEventArgs e)
         {
-            // Get the logged-in user's UserID from App.Current.Properties (set this during login)
+            
             if (!(App.Current.Properties["LoggedInUserID"] is int loggedInUserID))
             {
                 MessageBox.Show("Logged-in user not found. Please log in again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            // Join Users_table with NorthvilleStudent to get student record
+          
             var student = (from s in db.NorthVilleStudents
                            join u in db.Users_tables on s.N_Email equals u.Username
                            where u.UserID == loggedInUserID
@@ -46,7 +44,7 @@ namespace WpfApp3
             {
                 string studentID = student.N_StudentID;
 
-                // Query BorrowTransaction and related tables to fetch borrowed books
+                
                 var borrowedBooks = from bt in db.BorrowTransactions
                                     join b in db.Books on bt.B_BookID equals b.B_BookID
                                     join i in db.ISBNs on b.I_ISBNID equals i.I_ISBNID

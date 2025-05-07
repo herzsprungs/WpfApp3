@@ -14,15 +14,13 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LibrarianWindow.xaml
-    /// </summary>
+  
     public partial class LibrarianWindow : Window
     {
         public LibrarianWindow()
         {
             InitializeComponent();
-            NavigateToPage("Users"); // Default page
+            NavigateToPage("Users"); 
         }
 
         private void NavButton_Click(object sender, RoutedEventArgs e)

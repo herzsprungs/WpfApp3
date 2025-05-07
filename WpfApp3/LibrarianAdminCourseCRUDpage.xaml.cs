@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LibrarianAdminCourseCRUDpage.xaml
-    /// </summary>
+    
     public partial class LibrarianAdminCourseCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
@@ -31,7 +29,7 @@ namespace WpfApp3
 
         public class CourseDisplay
         {
-            public string CourseID { get; set; } // Changed from int to string
+            public string CourseID { get; set; } 
             public string Code { get; set; }
             public string Name { get; set; }
             public int StudentCount { get; set; }
@@ -47,8 +45,8 @@ namespace WpfApp3
                 Code = "COURSE-" + c.C_CourseID,
                 Name = c.C_CourseName,
                 StudentCount = db.NorthVilleStudents.Count(s => s.C_CourseID == c.C_CourseID),
-                Department = "N/A", // Replace with actual logic if needed
-                Status = "Active"   // Replace with actual logic if needed
+                Department = "N/A", 
+                Status = "Active"  
             }).ToList();
 
             coursesDataGrid.ItemsSource = courses;
@@ -58,19 +56,19 @@ namespace WpfApp3
         {
             if (!string.IsNullOrWhiteSpace(txtCourseCode.Text) && !string.IsNullOrWhiteSpace(txtCourseName.Text))
             {
-                // Ensure the course code starts with a letter and is followed by numbers (e.g., C021)
+                
                 string courseCode = txtCourseCode.Text.Trim();
                 if (courseCode.Length >= 2 && char.IsLetter(courseCode[0]) && int.TryParse(courseCode.Substring(1), out _))
                 {
                     var course = new Course
                     {
-                        C_CourseID = courseCode,  // Store course code directly as a string
-                        C_CourseName = txtCourseName.Text.Trim()  // Set the CourseName
+                        C_CourseID = courseCode,  
+                        C_CourseName = txtCourseName.Text.Trim()  
                     };
 
                     db.Courses.InsertOnSubmit(course);
                     db.SubmitChanges();
-                    // Show success message
+                   
                     MessageBox.Show("Course successfully added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadCourses();
 

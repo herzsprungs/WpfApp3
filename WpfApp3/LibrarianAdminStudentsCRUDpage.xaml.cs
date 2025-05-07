@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LibrarianAdminStudentsCRUDpage.xaml
-    /// </summary>
+   
     public partial class LibrarianAdminStudentsCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();

@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LibrarianAdminTransactionCRUDpage.xaml
-    /// </summary>
+    
     public partial class LibrarianAdminTransactionCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
@@ -27,7 +25,7 @@ namespace WpfApp3
         {
             InitializeComponent();
             LoadTransactions();
-            GenerateNextTransactionId(); // Add this line
+            GenerateNextTransactionId(); 
         }
 
         public class TransactionDisplay
@@ -70,7 +68,7 @@ namespace WpfApp3
                 N_StudentID = txtStudentID.Text.Trim(),
                 T_BorrowDate = txtBorrowDate.Text.Trim(),
                 T_ReturnDate = txtReturnDate.Text.Trim(),
-                T_TransactionNote = "Borrowed" // Default note
+                T_TransactionNote = "Borrowed" 
             };
 
             try
@@ -128,14 +126,14 @@ namespace WpfApp3
 
         private void GenerateNextTransactionId()
         {
-            // Get the highest existing transaction ID
+            
             var lastTransaction = db.BorrowTransactions
                 .OrderByDescending(t => t.T_TransactionID)
                 .FirstOrDefault();
 
             if (lastTransaction != null && lastTransaction.T_TransactionID.StartsWith("T"))
             {
-                // Extract the numeric part and increment
+               
                 if (int.TryParse(lastTransaction.T_TransactionID.Substring(1), out int lastNumber))
                 {
                     txtTransactionID.Text = $"T{(lastNumber + 1).ToString("D3")}";
@@ -143,13 +141,13 @@ namespace WpfApp3
                 }
             }
 
-            // Default to T001 if no transactions exist or format is invalid
+            
             txtTransactionID.Text = "T001";
         } 
 
         private void ClearForm()
         {
-            GenerateNextTransactionId(); // Regenerate ID when form is cleared
+            GenerateNextTransactionId(); 
             txtStudentID.Clear();
             txtBorrowDate.Clear();
             txtReturnDate.Clear();

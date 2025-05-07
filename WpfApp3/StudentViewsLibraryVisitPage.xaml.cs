@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for StudentViewsLibraryVisitPage.xaml
-    /// </summary>
+    
     public partial class StudentViewsLibraryVisitPage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
@@ -50,19 +48,19 @@ namespace WpfApp3
                 .OrderByDescending(t => t.T_BorrowDate)
                 .FirstOrDefault();
 
-            // Retrieve the highest L_LibraryVisitID in the format LVxxx
+            
             var latestVisit = db.LibraryVisits
-    .Where(v => v.L_LibraryVisitID.StartsWith("LV")) // Filter only those starting with "LV"
-    .ToList()  // Execute the query and bring the data into memory
-    .Where(v => !string.IsNullOrEmpty(v.L_LibraryVisitID)) // Now filter for non-empty IDs in memory
+    .Where(v => v.L_LibraryVisitID.StartsWith("LV")) 
+    .ToList()  
+    .Where(v => !string.IsNullOrEmpty(v.L_LibraryVisitID)) 
     .OrderByDescending(v => v.L_LibraryVisitID)
     .FirstOrDefault();
 
-            int nextVisitId = 1; // Default value if no records exist
+            int nextVisitId = 1; 
 
             if (latestVisit != null)
             {
-                // Extract the numeric part of the L_LibraryVisitID (e.g., LV001 -> 1)
+               
                 var numericPart = latestVisit.L_LibraryVisitID.Substring(2);
                 if (int.TryParse(numericPart, out int lastId))
                 {
@@ -70,16 +68,16 @@ namespace WpfApp3
                 }
             }
 
-            // Format the nextVisitId to match the "LVxxx" pattern
-            string formattedVisitId = "LV" + nextVisitId.ToString("D3"); // "D3" ensures 3 digits, e.g., LV001, LV002
+           
+            string formattedVisitId = "LV" + nextVisitId.ToString("D3"); 
 
             var visit = new LibraryVisit
             {
-                L_LibraryVisitID = formattedVisitId,  // Use the formatted ID
+                L_LibraryVisitID = formattedVisitId,  
                 N_StudentID = studentId,
                 T_TransactionID = latestTransaction?.T_TransactionID,
-                L_LibraryVisitDate = DateTime.Today.ToString("yyyy-MM-dd"),  // string
-                L_LibraryInTime = DateTime.Now.TimeOfDay,                    // TimeSpan?
+                L_LibraryVisitDate = DateTime.Today.ToString("yyyy-MM-dd"),  
+                L_LibraryInTime = DateTime.Now.TimeOfDay,                    
                 L_LibraryOutTime = null
             };
 
@@ -101,12 +99,12 @@ namespace WpfApp3
                 .OrderByDescending(v => v.L_LibraryVisitID)
                 .FirstOrDefault();
 
-            // Handle the date parsing after retrieving the records
+            
             if (visit != null && DateTime.TryParse(visit.L_LibraryVisitDate, out DateTime visitDate))
             {
                 if (visitDate.Date == DateTime.Today)
                 {
-                    // Proceed with check-out logic if the visit date is today
+                    
                     visit.L_LibraryOutTime = DateTime.Now.TimeOfDay;
                     db.SubmitChanges();
 
@@ -114,11 +112,10 @@ namespace WpfApp3
                     StatusText.Text = "Checked out at " + TimeOutValue.Text;
                     MessageBox.Show("Check-out successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Navigate back to LoginWindow
+                    
                     LoginWindow loginWindow = new LoginWindow();
                     loginWindow.Show();
 
-                    // Close the current window (if it's hosted in a Window)
                     Window.GetWindow(this)?.Close();
                 }
                 else

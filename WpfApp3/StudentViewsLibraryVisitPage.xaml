@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header with Library Logo and Title -->
+       
         <Border Grid.Row="0" Background="#3498db" Padding="20 15">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="📚" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
@@ -25,7 +25,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Welcome Message -->
+       
         <Border Grid.Row="1" Background="White" Padding="20" Margin="0,2,0,0">
             <StackPanel>
                 <TextBlock Name="WelcomeMessage" Text="Welcome, Student!" FontSize="22" FontWeight="Medium" Foreground="#2c3e50"/>
@@ -33,7 +33,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Main Content Area -->
+       
         <Border Grid.Row="2" Background="White" Margin="20,15" Padding="30" CornerRadius="8" BorderBrush="#e0e0e0" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -45,16 +45,16 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
-                <!-- Student ID Input -->
+               
                 <StackPanel Grid.Row="0" Margin="0,0,0,20">
                     <TextBlock Text="Student ID:" FontSize="14" FontWeight="Medium" Margin="0,0,0,5"/>
                     <TextBox Name="StudentIdTextBox" Height="35" Padding="10,5" FontSize="14" BorderBrush="#bdc3c7" BorderThickness="1"/>
                 </StackPanel>
 
-                <!-- Purpose of Visit -->
+                
                 <StackPanel Grid.Row="1" Margin="0,0,0,20"/>
 
-                <!-- Time In/Out Section -->
+               
                 <Grid Grid.Row="2" Margin="0,0,0,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -62,7 +62,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     
-                    <!-- Time In -->
+                   
                     <Border Grid.Column="0" Background="#ecf0f1" Padding="15" CornerRadius="5">
                         <StackPanel>
                             <TextBlock Text="Time In" FontSize="16" FontWeight="Medium" Foreground="#2c3e50"/>
@@ -78,7 +78,7 @@
                         </StackPanel>
                     </Border>
                     
-                    <!-- Time Out -->
+                  
                     <Border Grid.Column="2" Background="#ecf0f1" Padding="15" CornerRadius="5">
                         <StackPanel>
                             <TextBlock Text="Time Out" FontSize="16" FontWeight="Medium" Foreground="#2c3e50"/>
@@ -95,7 +95,7 @@
                     </Border>
                 </Grid>
 
-                <!-- Current Status -->
+                
                 <Border Grid.Row="3" Background="#f9f9f9" Padding="15" CornerRadius="5" Margin="0,0,0,20">
                     <StackPanel>
                         <TextBlock Text="Current Status:" FontSize="14" FontWeight="Medium"/>
@@ -103,7 +103,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Recent Visits (Optional) -->
+               
                 <TextBlock Grid.Row="4" Text="Recent Visits" FontSize="16" FontWeight="Medium" Margin="0,10,0,10"/>
                 <ListView Grid.Row="5" Name="RecentVisitsListView" Height="100" BorderBrush="#e0e0e0" BorderThickness="1">
                     <ListView.View>
@@ -118,7 +118,7 @@
             </Grid>
         </Border>
 
-        <!-- Footer -->
+      
         <Border Grid.Row="3" Background="#34495e" Padding="15">
             <TextBlock Text="© 2025 Campus Library System" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
         </Border>

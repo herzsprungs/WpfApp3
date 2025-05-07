@@ -14,7 +14,7 @@
         ResizeMode="CanResize">
 
     <Window.Resources>
-        <!-- Modern Button Style -->
+       
         <Style x:Key="ModernButton" TargetType="Button">
             <Setter Property="Background" Value="#3498db"/>
             <Setter Property="Foreground" Value="White"/>
@@ -49,12 +49,12 @@
             </Setter>
         </Style>
 
-        <!-- Active Button Style -->
+       
         <Style x:Key="ActiveButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
             <Setter Property="Background" Value="#2ecc71"/>
         </Style>
 
-        <!-- Window Control Button Style -->
+       
         <Style x:Key="WindowControlButton" TargetType="Button">
             <Setter Property="Width" Value="30"/>
             <Setter Property="Height" Value="30"/>
@@ -88,10 +88,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Sidebar with video background -->
+           
             <Border CornerRadius="15,0,0,15" ClipToBounds="True">
                 <Grid>
-                    <!-- Background Video with Blur -->
+                   
                     <MediaElement x:Name="BackgroundVideo" 
                                   Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
                                   Stretch="UniformToFill"
@@ -102,10 +102,10 @@
                         </MediaElement.Effect>
                     </MediaElement>
 
-                    <!-- Dark Overlay for better readability -->
+                   
                     <Border Background="#80000000"/>
 
-                    <!-- Sidebar Content -->
+                   
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="120"/>
@@ -113,13 +113,13 @@
                             <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Logo and Title -->
+                       
                         <StackPanel VerticalAlignment="Center" Margin="20,20,20,10">
                             <TextBlock Text="STUDENTS USERS" FontWeight="Bold" FontSize="22" Foreground="White" Width="233"/>
                             <TextBlock Text="Management System" FontSize="14" Foreground="#ccffffff" Margin="0,5,0,0" Width="232"/>
                         </StackPanel>
 
-                        <!-- Navigation Menu -->
+                        
                         <StackPanel Grid.Row="1" Margin="15,20">
                             <TextBlock Text="MENU" Foreground="#99ffffff" FontSize="12" Margin="5,0,0,15"/>
 
@@ -145,7 +145,7 @@
                                     x:Name="BorrowButton"/>
                         </StackPanel>
 
-                        <!-- Logout Button -->
+                       
                         <Button Grid.Row="2" 
                                 Style="{StaticResource ModernButton}" 
                                 Content="🚪  Logout" 
@@ -156,14 +156,14 @@
                 </Grid>
             </Border>
 
-            <!-- Main Content Area -->
+           
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Top Bar -->
+               
                 <Border Background="Transparent" BorderThickness="0,0,0,1" BorderBrush="#20000000">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -171,7 +171,7 @@
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Page Title -->
+                      
                         <TextBlock x:Name="PageTitle" 
                                    Text="Dashboard" 
                                    FontSize="20" 
@@ -183,14 +183,14 @@
                     </Grid>
                 </Border>
 
-                <!-- Main Content Frame -->
+               
                 <Frame x:Name="MainFrame" 
                        Grid.Row="1" 
                        NavigationUIVisibility="Hidden"
                        Margin="20"/>
             </Grid>
 
-            <!-- Make the top bar draggable -->
+            
             <Border Grid.Column="1" 
                     Background="Transparent" 
                     Height="60" 

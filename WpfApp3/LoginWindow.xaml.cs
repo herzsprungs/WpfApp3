@@ -14,12 +14,10 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
+    
     public partial class LoginWindow : Window
     {
-        // 1. Initialize the DataContext
+        
         DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
 
         public LoginWindow()
@@ -27,7 +25,7 @@ namespace WpfApp3
             InitializeComponent();
         }
 
-        // 2. Login Button Click
+        
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
@@ -42,17 +40,17 @@ namespace WpfApp3
             {
                 MessageBox.Show("Login Successful!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                // Check if the username matches an email in the students table to get the student ID
+               
                 var student = db.NorthVilleStudents
-                    .FirstOrDefault(s => s.N_Email.ToLower() == user.Username.ToLower()); // Case insensitive comparison
+                    .FirstOrDefault(s => s.N_Email.ToLower() == user.Username.ToLower()); 
 
                 if (student != null)
                 {
-                    // Store the logged-in student's ID globally (e.g., in App.Current.Properties or Session)
+                   
                     App.Current.Properties["LoggedInStudentID"] = student.N_StudentID;
                 }
 
-                // Handle user role-based navigation
+               
                 switch (user.Role)
                 {
                     case "Librarian":
@@ -77,7 +75,7 @@ namespace WpfApp3
             }
         }
 
-        // 3. Role Quick Access Buttons
+        
         private void StudentTest_Click(object sender, RoutedEventArgs e)
         {
             new StudentWindow().Show();

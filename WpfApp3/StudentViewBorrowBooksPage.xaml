@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header with Library Logo and Title -->
+        
         <Border Grid.Row="0" Background="#3498db" Padding="20 15">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="📚" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
@@ -25,7 +25,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Welcome Message -->
+        
         <Border Grid.Row="1" Background="White" Padding="20" Margin="0,2,0,0">
             <StackPanel>
                 <TextBlock Name="WelcomeMessage" Text="My Borrowed Books" FontSize="22" FontWeight="Medium" Foreground="#2c3e50"/>
@@ -33,7 +33,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Main Content Area -->
+       
         <Border Grid.Row="2" Background="White" Margin="20,15" Padding="30" CornerRadius="8" BorderBrush="#e0e0e0" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -42,7 +42,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Quote Section -->
+                
                 <Border Grid.Row="0" Background="#f9f9f9" Padding="15" CornerRadius="5" Margin="0,0,0,20">
                     <StackPanel>
                         <TextBlock Text="A reader lives a thousand lives before he dies. The man who never reads lives only one." 
@@ -52,7 +52,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Current Borrowings DataGrid -->
+                
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -79,7 +79,7 @@
             </Grid>
         </Border>
 
-        <!-- Footer -->
+        
         <Border Grid.Row="3" Background="#34495e" Padding="15">
             <TextBlock Text="© 2025 Campus Library System" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
         </Border>

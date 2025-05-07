@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for LibrarianAdminUsersCRUDpage.xaml
-    /// </summary>
+    
     public partial class LibrarianAdminUsersCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
@@ -31,7 +29,7 @@ namespace WpfApp3
 
         public class UserDisplay
         {
-            public int UserID { get; set; }  // Change UserID to int to match database type
+            public int UserID { get; set; }  
             public string Username { get; set; }
             public string Role { get; set; }
             public string PasswordHash { get; set; }
@@ -44,7 +42,7 @@ namespace WpfApp3
                 {
                     UserID = u.UserID,
                     Username = u.Username,
-                    PasswordHash = u.PasswordHash,  // Add PasswordHash to the query
+                    PasswordHash = u.PasswordHash, 
                     Role = u.Role
                 }).ToList();
 
@@ -60,14 +58,14 @@ namespace WpfApp3
                 return;
             }
 
-            // Generate the next UserID (assuming it's an int and auto-increment-like)
+          
             int nextUserId = db.Users_tables.Any()
                 ? db.Users_tables.Max(u => u.UserID) + 1
                 : 1;
 
             var newUser = new Users_table
             {
-                UserID = nextUserId,  // Auto-generated
+                UserID = nextUserId,  
                 Username = txtNewUsername.Text.Trim(),
                 PasswordHash = HashPassword(txtNewPass.Password),
                 Role = (cmbRole.SelectedItem as ComboBoxItem)?.Content.ToString()
@@ -97,8 +95,7 @@ namespace WpfApp3
 
                     if (_selectedUser != null)
                     {
-                        // Example: populate editable fields if you're showing an edit panel
-                         // Convert int to string for display
+                        
                         txtNewUsername.Text = _selectedUser.Username;
                         cmbRole.SelectedValue = _selectedUser.Role;
                         MessageBox.Show($"Editing user: {_selectedUser.Username}");
@@ -112,7 +109,7 @@ namespace WpfApp3
             if (sender is Button btn && btn.Tag != null)
             {
                 int userId;
-                if (int.TryParse(btn.Tag.ToString(), out userId))  // Convert userId from string to int
+                if (int.TryParse(btn.Tag.ToString(), out userId))  
                 {
                     var user = db.Users_tables.FirstOrDefault(u => u.UserID == userId);
 
@@ -134,7 +131,7 @@ namespace WpfApp3
 
         private string HashPassword(string password)
         {
-            // Replace with proper hashing (e.g., BCrypt in production)
+           
             return password;
         }
 

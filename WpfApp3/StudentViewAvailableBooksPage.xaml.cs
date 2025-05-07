@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    /// <summary>
-    /// Interaction logic for StudentViewAvailableBooksPage.xaml
-    /// </summary>
+    
     public partial class StudentViewAvailableBooksPage : Page
     {
         DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
@@ -48,7 +46,7 @@ namespace WpfApp3
                     return;
                 }
 
-                // Get BookID (just pick one with that ISBN; SP handles availability)
+                
                 var book = db.Books.FirstOrDefault(b => b.I_ISBNID == selectedBook.I_ISBNID);
                 if (book == null)
                 {
@@ -60,7 +58,7 @@ namespace WpfApp3
                 {
                     db.sp_BorrowBook(studentID, book.B_BookID, DateTime.Now);
                     MessageBox.Show("Book borrowed successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadAvailableBooks(); // Refresh grid
+                    LoadAvailableBooks(); 
                 }
                 catch (Exception ex)
                 {
@@ -71,13 +69,13 @@ namespace WpfApp3
 
         private string GetLoggedInStudentID()
         {
-            // Fetch the logged-in student's ID from App.Current.Properties (set during login)
+            
             if (App.Current.Properties["LoggedInStudentID"] is string studentId)
             {
                 return studentId;
             }
 
-            return null; // Return null if no student ID is found
+            return null; 
         }
     }
 }

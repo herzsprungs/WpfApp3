@@ -15,7 +15,7 @@
         ResizeMode="CanResize">
 
     <Window.Resources>
-        <!-- Modern Button Style -->
+        
         <Style x:Key="ModernButton" TargetType="Button">
             <Setter Property="Background" Value="#9b59b6"/>
             <Setter Property="Foreground" Value="White"/>
@@ -50,7 +50,7 @@
             </Setter>
         </Style>
 
-        <!-- Active Button Style -->
+        
         <Style x:Key="ActiveButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
             <Setter Property="Background" Value="#1abc9c"/>
         </Style>
@@ -89,10 +89,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Sidebar with video background -->
+           
             <Border CornerRadius="15,0,0,15" ClipToBounds="True">
                 <Grid>
-                    <!-- Background Video with Blur -->
+                    
                     <MediaElement x:Name="BackgroundVideo" 
                                   Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
                                   Stretch="UniformToFill"
@@ -103,10 +103,10 @@
                         </MediaElement.Effect>
                     </MediaElement>
 
-                    <!-- Dark Overlay for better readability -->
+                    
                     <Border Background="#80000000"/>
 
-                    <!-- Sidebar Content -->
+                    
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="120"/>
@@ -114,13 +114,13 @@
                             <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Logo and Title -->
+                        
                         <StackPanel VerticalAlignment="Center" Margin="20,20,20,10">
                             <TextBlock Text="CLERICAL ASSISTANT" FontWeight="Bold" FontSize="22" Foreground="White"/>
                             <TextBlock Text="Staff Portal" FontSize="14" Foreground="#ccffffff" Margin="0,5,0,0"/>
                         </StackPanel>
 
-                        <!-- Navigation Menu -->
+                       
                         <StackPanel Grid.Row="1" Margin="15,20">
                             <TextBlock Text="ADMINISTRATIVE TOOLS" Foreground="#99ffffff" FontSize="12" Margin="5,0,0,15"/>
 
@@ -139,7 +139,7 @@
                                     x:Name="ManageBooksButton"/>
                         </StackPanel>
 
-                        <!-- Logout Button -->
+                       
                         <Button Grid.Row="2" 
                                 Style="{StaticResource ModernButton}" 
                                 Content="🚪  Logout" 
@@ -150,14 +150,14 @@
                 </Grid>
             </Border>
 
-            <!-- Main Content Area -->
+            
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Top Bar -->
+                
                 <Border Background="Transparent" BorderThickness="0,0,0,1" BorderBrush="#20000000">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -166,7 +166,6 @@
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- Page Title -->
                         <TextBlock x:Name="PageTitle" 
                                    Text="Admin Dashboard" 
                                    FontSize="20" 
@@ -174,7 +173,7 @@
                                    VerticalAlignment="Center"
                                    Margin="20,0"/>
 
-                        <!-- Admin Info -->
+                        
                         <StackPanel Grid.Column="1" 
                                     Orientation="Horizontal" 
                                     VerticalAlignment="Center"
@@ -194,7 +193,7 @@
                     </Grid>
                 </Border>
 
-                <!-- Quick Stats Area -->
+                
                 <Grid Grid.Row="1" Margin="20,20,20,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -203,7 +202,7 @@
 
                    
 
-                    <!-- Main Content Frame -->
+                    
                     <Frame x:Name="MainFrame" 
                            Grid.Row="1" 
                            NavigationUIVisibility="Hidden"
@@ -211,7 +210,7 @@
                 </Grid>
             </Grid>
 
-            <!-- Make the top bar draggable -->
+            
             <Border Grid.Column="1" 
                     Background="Transparent" 
                     Height="60" 

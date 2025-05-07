@@ -56,17 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClericalDefaultPage.xaml.cs">
-      <DependentUpon>ClericalDefaultPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClericalViewLibraryTimeInTimeOut.xaml.cs">
       <DependentUpon>ClericalViewLibraryTimeInTimeOut.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClericalViewsManageBooksPage.xaml.cs">
       <DependentUpon>ClericalViewsManageBooksPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ClericalViewsTransactionPage.xaml.cs">
-      <DependentUpon>ClericalViewsTransactionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClericalWindow.xaml.cs">
       <DependentUpon>ClericalWindow.xaml</DependentUpon>
@@ -94,17 +88,8 @@
     <Compile Include="LibrarianAdminUsersCRUDpage.xaml.cs">
       <DependentUpon>LibrarianAdminUsersCRUDpage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LibrarianDashboardPage.xaml.cs">
-      <DependentUpon>LibrarianDashboardPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LibrarianDefaultPage.xaml.cs">
-      <DependentUpon>LibrarianDefaultPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LibrarianWindow.xaml.cs">
       <DependentUpon>LibrarianWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="StudentDefaultPage.xaml.cs">
-      <DependentUpon>StudentDefaultPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentViewAvailableBooksPage.xaml.cs">
       <DependentUpon>StudentViewAvailableBooksPage.xaml</DependentUpon>
@@ -118,19 +103,11 @@
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="ClericalDefaultPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ClericalViewLibraryTimeInTimeOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClericalViewsManageBooksPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClericalViewsTransactionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,14 +139,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LibrarianDashboardPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LibrarianDefaultPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LibrarianWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,10 +162,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="StudentDefaultPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StudentViewAvailableBooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
