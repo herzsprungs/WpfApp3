@@ -49,37 +49,39 @@
             <Setter Property="BorderBrush" Value="#dcdcdc"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
                         <Grid>
                             <ToggleButton x:Name="ToggleButton" 
-                                          BorderBrush="{TemplateBinding BorderBrush}"
-                                          Background="{TemplateBinding Background}"
-                                          BorderThickness="{TemplateBinding BorderThickness}"
-                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
                                 <ToggleButton.Template>
                                     <ControlTemplate TargetType="ToggleButton">
                                         <Border x:Name="Border" 
-                                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                Background="{TemplateBinding Background}"
-                                                CornerRadius="6">
+                                      BorderBrush="{TemplateBinding BorderBrush}" 
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Background="{TemplateBinding Background}"
+                                      CornerRadius="6">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <ContentPresenter Margin="10,0,0,0"
-                                                                  Content="{TemplateBinding Content}"
-                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                  VerticalAlignment="Center"
-                                                                  HorizontalAlignment="Left"/>
+                                                    Content="{TemplateBinding Content}"
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Left"
+                                                    TextElement.Foreground="{TemplateBinding Foreground}"/>
                                                 <Path x:Name="Arrow" Grid.Column="1" Margin="0,0,10,0"
-                                                      Fill="#555555" Stroke="#555555"
-                                                      StrokeThickness="1" HorizontalAlignment="Right"
-                                                      VerticalAlignment="Center" Stretch="Uniform"
-                                                      Width="10" Height="6" Data="M 0,0 L 4,4 L 8,0 Z"/>
+                                          Fill="#555555" Stroke="#555555"
+                                          StrokeThickness="1" HorizontalAlignment="Right"
+                                          VerticalAlignment="Center" Stretch="Uniform"
+                                          Width="10" Height="6" Data="M 0,0 L 4,4 L 8,0 Z"/>
                                             </Grid>
                                         </Border>
                                         <ControlTemplate.Triggers>
@@ -95,11 +97,11 @@
                                 </ToggleButton.Template>
                             </ToggleButton>
                             <Popup x:Name="Popup" IsOpen="{TemplateBinding IsDropDownOpen}" 
-                                   AllowsTransparency="True" Focusable="False"
-                                   Placement="Bottom" PopupAnimation="Slide">
+                       AllowsTransparency="True" Focusable="False"
+                       Placement="Bottom" PopupAnimation="Slide">
                                 <Border BorderBrush="#dcdcdc" BorderThickness="1" 
-                                        Background="White" CornerRadius="6"
-                                        Margin="0,2,0,0">
+                            Background="White" CornerRadius="6"
+                            Margin="0,2,0,0">
                                     <ScrollViewer SnapsToDevicePixels="True" Margin="4">
                                         <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
@@ -109,71 +111,59 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-
-        <!-- Date Picker Style -->
-        <Style x:Key="ModernDatePicker" TargetType="DatePicker">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Padding" Value="10,0"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#dcdcdc"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Template">
+            <Setter Property="ItemContainerStyle">
                 <Setter.Value>
-                    <ControlTemplate TargetType="DatePicker">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="6">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <DatePickerTextBox x:Name="PART_TextBox" 
-                                                  VerticalContentAlignment="Center"
-                                                  Padding="5,0,5,0" 
-                                                  BorderThickness="0"/>
-                                <Button x:Name="PART_Button" Grid.Column="1" Focusable="False" 
-                                        HorizontalAlignment="Right" Margin="0,0,5,0"
-                                        VerticalAlignment="Center" Width="20" Height="20"
-                                        Background="Transparent" BorderThickness="0">
-                                    <Path Fill="#555555" Data="M13.2,14.1H14.5V12.8H13.2Zm-2.6,0H12V12.8H10.6Zm-2.7,0H9.4V12.8H7.9Zm8,2.7H14.5V15.5H13.2Zm-2.6,0H12V15.5H10.6Zm-2.7,0H9.4V15.5H7.9Zm8,2.7H14.5V18.2H13.2Zm-2.6,0H12V18.2H10.6Zm-2.7,0H9.4V18.2H7.9ZM16.5,7.9h-1.4V6.7h-1.3V7.9H10.1V6.7H8.8V7.9H7.4c-0.7,0-1.3,0.6-1.3,1.3v10.7c0,0.7,0.6,1.4,1.3,1.4h9.1c0.7,0,1.4-0.7,1.4-1.4V9.2C17.9,8.5,17.2,7.9,16.5,7.9Zm0,12h-9.1V10.5h9.1Z" />
-                                </Button>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ComboBoxItem">
+                                    <Border Background="{TemplateBinding Background}" 
+                                  BorderThickness="0"
+                                  Padding="10,8">
+                                        <ContentPresenter Content="{TemplateBinding Content}"
+                                            TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsHighlighted" Value="True">
+                                            <Setter Property="Background" Value="#2980b9"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                 </Setter.Value>
             </Setter>
         </Style>
 
         <!-- Button Styles -->
-        <Style x:Key="ModernButton" TargetType="Button">
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#2980b9"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Padding" Value="15,0"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#3498db"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
                                 CornerRadius="8" 
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+                                Padding="{TemplateBinding Padding}"
+                                BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#2980b9"/>
+                                <Setter Property="Background" Value="#1c638b"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#1c638b"/>
+                                <Setter Property="Background" Value="#154a6a"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -181,23 +171,22 @@
             </Setter>
         </Style>
 
-        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#2980b9"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+        <Style x:Key="SuccessButton" TargetType="Button">
             <Setter Property="Background" Value="#27ae60"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="15,0"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
                                 CornerRadius="8" 
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+                                Padding="{TemplateBinding Padding}"
+                                BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -213,36 +202,8 @@
             </Setter>
         </Style>
 
-        <!-- Action button styles -->
-        <Style x:Key="GridActionButton" TargetType="Button">
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Padding" Value="8,5"/>
-            <Setter Property="Background" Value="#e8f4fc"/>
-            <Setter Property="Foreground" Value="#2980b9"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                CornerRadius="4" 
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.8"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ReturnButtonStyle" TargetType="Button">
+        <!-- Edit and Delete button styles -->
+        <Style x:Key="EditButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="3"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Background" Value="#e8f4fc"/>
@@ -255,7 +216,7 @@
                         <Border Background="{TemplateBinding Background}" 
                                 CornerRadius="4" 
                                 Padding="{TemplateBinding Padding}">
-                            <TextBlock Text="↩️ Return" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock Text="✏️ Edit" Foreground="{TemplateBinding Foreground}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -267,11 +228,11 @@
             </Setter>
         </Style>
 
-        <Style x:Key="RenewButtonStyle" TargetType="Button">
+        <Style x:Key="DeleteButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="3"/>
             <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Background" Value="#e6f7ed"/>
-            <Setter Property="Foreground" Value="#27ae60"/>
+            <Setter Property="Background" Value="#ffe8e8"/>
+            <Setter Property="Foreground" Value="#e74c3c"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -280,32 +241,7 @@
                         <Border Background="{TemplateBinding Background}" 
                                 CornerRadius="4" 
                                 Padding="{TemplateBinding Padding}">
-                            <TextBlock Text="🔄 Renew" Foreground="{TemplateBinding Foreground}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.8"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="DetailsButtonStyle" TargetType="Button">
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Background" Value="#f0f0f0"/>
-            <Setter Property="Foreground" Value="#555555"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                CornerRadius="4" 
-                                Padding="{TemplateBinding Padding}">
-                            <TextBlock Text="📋 Details" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock Text="🗑️ Del" Foreground="{TemplateBinding Foreground}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -364,146 +300,80 @@
         </Style>
     </Page.Resources>
 
-    <Grid Margin="20">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Page Header -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,20">
-            <TextBlock Text="Transaction Management" FontSize="24" FontWeight="SemiBold" Foreground="#2c3e50"/>
-            <TextBlock Text="Search, filter, and manage book borrowing transactions" FontSize="14" Foreground="#7f8c8d" Margin="0,5,0,0"/>
+        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+            <TextBlock Text="Borrow Transaction Management" FontSize="24" FontWeight="SemiBold" Foreground="#2c3e50"/>
+            <TextBlock Text="Manage book borrowing and returning transactions" 
+                       FontSize="14" Foreground="#7f8c8d" Margin="0,5,0,0"/>
         </StackPanel>
 
-        <!-- Search Section -->
-        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20" 
-                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,15">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Text="Search Transactions" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50" Margin="0,0,0,15"/>
-
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <TextBlock Text="Search by Book Title, ID, Student ID or Name" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <TextBox x:Name="txtSearch" Style="{StaticResource ModernTextBox}" 
-                                 />
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                        <TextBlock Text="Transaction Type" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <ComboBox x:Name="cmbTransactionType" Style="{StaticResource ModernComboBox}" SelectedIndex="0">
-                            <ComboBoxItem Content="All Transactions"/>
-                            <ComboBoxItem Content="Borrowed"/>
-                            <ComboBoxItem Content="Returned"/>
-                            <ComboBoxItem Content="Overdue"/>
-                            <ComboBoxItem Content="Renewed"/>
-                        </ComboBox>
-                    </StackPanel>
-
-                    <Button Grid.Column="2" Content="🔍 SEARCH" Style="{StaticResource PrimaryButton}" 
-                            Margin="0,18,0,0" Height="40" />
-                </Grid>
-            </Grid>
-        </Border>
-
-        <!-- Date Filter Section -->
-        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="20" 
-                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,15">
+        <!-- Add New Transaction Section -->
+        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15" 
+                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                    <TextBlock Text="From Date" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                    <DatePicker x:Name="dpStartDate" Style="{StaticResource ModernDatePicker}"/>
-                </StackPanel>
+                <TextBox x:Name="txtTransactionID" Grid.Column="0" Style="{StaticResource ModernTextBox}" 
+                         Tag="Transaction ID" Margin="0,0,10,0"/>
 
-                <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                    <TextBlock Text="To Date" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                    <DatePicker x:Name="dpEndDate" Style="{StaticResource ModernDatePicker}"/>
-                </StackPanel>
+                <TextBox x:Name="txtStudentID" Grid.Column="1" Style="{StaticResource ModernTextBox}" 
+                         Tag="Student ID" Margin="0,0,10,0"/>
 
-                <StackPanel Grid.Column="2" Margin="0,0,10,0">
-                    <TextBlock Text="Status" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                    <ComboBox x:Name="cmbStatus" Style="{StaticResource ModernComboBox}" SelectedIndex="0">
-                        <ComboBoxItem Content="All Statuses"/>
-                        <ComboBoxItem Content="On Time"/>
-                        <ComboBoxItem Content="Overdue"/>
-                        <ComboBoxItem Content="Returned Late"/>
-                        <ComboBoxItem Content="Lost"/>
-                    </ComboBox>
-                </StackPanel>
+                <TextBox x:Name="txtBorrowDate" Grid.Column="2" Style="{StaticResource ModernTextBox}" 
+                         Tag="Borrow Date (YYYY-MM-DD)" Margin="0,0,10,0"/>
 
-                <Button Grid.Column="3" Content="📅 FILTER" Style="{StaticResource PrimaryButton}" 
-                        Margin="0,18,0,0" Height="40" />
+                <TextBox x:Name="txtReturnDate" Grid.Column="3" Style="{StaticResource ModernTextBox}" 
+                         Tag="Return Date (YYYY-MM-DD)" Margin="0,0,10,0"/>
+
+                <Button Grid.Column="4" Content="➕ ADD" Style="{StaticResource SuccessButton}" 
+                        Height="40" Click="AddTransaction_Click"/>
             </Grid>
         </Border>
 
-        <!-- Transaction List -->
-        <Border Grid.Row="3" Background="White" CornerRadius="10" 
+        <!-- Transaction List with Horizontal Scrolling -->
+        <Border Grid.Row="2" Background="White" CornerRadius="10" 
                 BorderBrush="#e0e0e0" BorderThickness="1">
-            <Grid Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Margin="0,0,0,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="Transaction Records" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50"/>
-
-                    <TextBlock Grid.Column="1" Text="Total transactions: 328" Foreground="#7f8c8d" VerticalAlignment="Center"/>
-                </Grid>
-
-                <DataGrid Grid.Row="1" x:Name="transactionsDataGrid" AutoGenerateColumns="False" Margin="0,5,0,0"
-                          IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <DataGrid x:Name="transactionsDataGrid" AutoGenerateColumns="False"
+          IsReadOnly="True" SelectionMode="Single" 
+          HeadersVisibility="Column" RowHeight="45"
+          SelectionChanged="TransactionsDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="TRANSACTION ID" Binding="{Binding TransactionId}" Width="0.8*"/>
-                        <DataGridTextColumn Header="BOOK ID" Binding="{Binding BookId}" Width="0.8*"/>
-                        <DataGridTextColumn Header="BOOK TITLE" Binding="{Binding BookTitle}" Width="2*"/>
-                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding StudentId}" Width="0.8*"/>
-                        <DataGridTextColumn Header="STUDENT NAME" Binding="{Binding StudentName}" Width="1.5*"/>
-                        <DataGridTextColumn Header="BORROW DATE" Binding="{Binding BorrowDate}" Width="1*"/>
-                        <DataGridTextColumn Header="DUE DATE" Binding="{Binding DueDate}" Width="1*"/>
-                        <DataGridTextColumn Header="STATUS" Binding="{Binding Status}" Width="0.8*"/>
-                        <DataGridTemplateColumn Header="ACTIONS" Width="1.5*">
+                        <DataGridTextColumn Header="TRANSACTION ID" Binding="{Binding T_TransactionID}" Width="150"/>
+                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding N_StudentID}" Width="120"/>
+                        <DataGridTextColumn Header="BORROW DATE" Binding="{Binding T_BorrowDate}" Width="150"/>
+
+                        <!-- Removed NOTES Column -->
+                        <!--<DataGridTextColumn Header="NOTES" Binding="{Binding T_TransactionNote}" Width="*"/>-->
+
+                        <DataGridTemplateColumn Header="ACTIONS" Width="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource ReturnButtonStyle}" />
-                                        <Button Style="{StaticResource RenewButtonStyle}" />
-                                        <Button Style="{StaticResource DetailsButtonStyle}" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Content="✏️" Style="{StaticResource EditButtonStyle}" 
+                                Click="EditTransaction_Click" Tag="{Binding T_TransactionID}"/>
+                                        <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
+                                Click="DeleteTransaction_Click" Tag="{Binding T_TransactionID}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
+            </ScrollViewer>
         </Border>
-
-       
     </Grid>
 </Page>

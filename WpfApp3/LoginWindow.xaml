@@ -107,30 +107,14 @@
             <!-- Left Side - Media & Logo -->
             <Border Grid.Column="0" CornerRadius="10,0,0,10" ClipToBounds="True">
                 <Grid>
-                    <MediaElement Source="C:\Users\23-0144c\Downloads\7513671-uhd_3840_2160_24fps (1).mp4" 
+                    <MediaElement Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
                                   Stretch="UniformToFill">
                         <MediaElement.Effect>
                             <BlurEffect Radius="5" />
                         </MediaElement.Effect>
                     </MediaElement>
 
-                    <!-- Overlay for text readability -->
-
-                    <!-- Logo -->
-
-                    <!-- Close Button -->
-                    <Button Content="×" 
-                            FontSize="18" 
-                            Width="32" 
-                            Height="32"
-                            Padding="0"
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Top"
-                            Margin="15"
-                            Foreground="White"
-                            Background="#33000000"
-                            
-                            Style="{StaticResource ElegantButton}"/>
+                   
                 </Grid>
             </Border>
 
@@ -185,7 +169,8 @@
                                 FontSize="13"
                                 FontWeight="SemiBold"
                                 Margin="0,15,0,30"
-                                Height="45">
+                                Height="45"
+                                Click="btnLogin_Click">
                             <Button.Effect>
                                 <DropShadowEffect ShadowDepth="1" 
                                                   BlurRadius="10" 

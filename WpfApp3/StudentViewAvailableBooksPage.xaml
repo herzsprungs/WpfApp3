@@ -197,23 +197,9 @@
                           AutoGenerateColumns="False" 
                           IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="" Width="Auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Border Width="32" Height="32" 
-                                            Background="#e1f0fa" 
-                                            CornerRadius="16" 
-                                            HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center">
-                                        <TextBlock Text="📚" 
-                                                   FontSize="16" 
-                                                   HorizontalAlignment="Center" 
-                                                   VerticalAlignment="Center"/>
-                                    </Border>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Title" Width="*" Binding="{Binding Title}">
+                        <DataGridTextColumn Header="ISBN ID" Binding="{Binding I_ISBNID}" Width="150"/>
+
+                        <DataGridTextColumn Header="Book Name" Binding="{Binding I_BookName}" Width="*">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -222,37 +208,31 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Author" Width="200" Binding="{Binding Author}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                    <Setter Property="Padding" Value="5,0"/>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
+
                         <DataGridTemplateColumn Header="Available Copies" Width="130">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <Border Background="#e1f5ec" 
-                                                CornerRadius="4" 
-                                                Padding="8,2" 
-                                                Margin="5,0">
+                            CornerRadius="4" 
+                            Padding="8,2" 
+                            Margin="5,0">
                                             <TextBlock Text="{Binding AvailableCopies}" 
-                                                       FontWeight="SemiBold" 
-                                                       Foreground="#27ae60"/>
+                                   FontWeight="SemiBold" 
+                                   Foreground="#27ae60"/>
                                         </Border>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+
                         <DataGridTemplateColumn Header="Action" Width="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="Borrow" 
-                                            Style="{StaticResource BorrowButton}" 
-                                            
-                                            Margin="5,0"/>
+                    Style="{StaticResource BorrowButton}" 
+                    Margin="5,0"
+                    Click="BorrowButton_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -260,17 +240,7 @@
                 </DataGrid>
 
                 <!-- Pagination -->
-                <StackPanel Grid.Row="1" 
-                            Orientation="Horizontal" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Bottom" 
-                            Margin="0,10,0,0">
-                    <Button Content="◀" Width="30" Height="30" Background="White" BorderBrush="#E0E0E0"/>
-                    <Button Content="1" Width="30" Height="30" Background="#3498db" Foreground="White" BorderThickness="0" FontWeight="SemiBold"/>
-                    <Button Content="2" Width="30" Height="30" Background="White" BorderBrush="#E0E0E0"/>
-                    <Button Content="3" Width="30" Height="30" Background="White" BorderBrush="#E0E0E0"/>
-                    <Button Content="▶" Width="30" Height="30" Background="White" BorderBrush="#E0E0E0"/>
-                </StackPanel>
+                
             </Grid>
         </Border>
     </Grid>

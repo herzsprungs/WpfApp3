@@ -59,73 +59,17 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Current Borrowings" FontSize="16" FontWeight="Medium" Foreground="#2c3e50" Margin="0,0,0,10"/>
 
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding BorrowedBooks}" 
-                              AutoGenerateColumns="False"
-                              CanUserAddRows="False"
-                              CanUserDeleteRows="False"
-                              IsReadOnly="True"
-                              HeadersVisibility="Column"
-                              GridLinesVisibility="Horizontal"
-                              AlternatingRowBackground="#f9f9f9"
-                              BorderBrush="#bdc3c7" BorderThickness="1"
-                              RowHeaderWidth="0">
-                        <DataGrid.Resources>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="Background" Value="#ecf0f1"/>
-                                <Setter Property="Foreground" Value="#2c3e50"/>
-                                <Setter Property="FontWeight" Value="SemiBold"/>
-                                <Setter Property="Padding" Value="10,8"/>
-                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                                <Setter Property="BorderBrush" Value="#bdc3c7"/>
-                            </Style>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="Padding" Value="10,8"/>
-                                <Setter Property="BorderThickness" Value="0"/>
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Book Title" Binding="{Binding Title}" Width="*"/>
-                            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="0.6*"/>
-                            <DataGridTextColumn Header="Borrowed Date" Binding="{Binding BorrowedDate}" Width="0.4*"/>
-                            <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate}" Width="0.4*">
-                                <DataGridTextColumn.CellStyle>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="Padding" Value="10,8"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsOverdue}" Value="True">
-                                                <Setter Property="Foreground" Value="#e74c3c"/>
-                                                <Setter Property="FontWeight" Value="SemiBold"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGridTextColumn.CellStyle>
-                            </DataGridTextColumn>
-                            <DataGridTemplateColumn Header="Actions" Width="100">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Renew" Background="#27ae60" Foreground="White" Padding="10,5" BorderThickness="0">
-                                            <Button.Resources>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="CornerRadius" Value="4"/>
-                                                </Style>
-                                            </Button.Resources>
-                                        </Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+
+
                 </Grid>
 
-                <!-- Request New Borrow Button -->
-                <Button Grid.Row="2" Content="Request New Borrowing" 
-                        Background="#3498db" Foreground="White"
-                        Margin="0,20,0,0" Padding="15,8"
-                        FontSize="14" FontWeight="Medium"
-                        HorizontalAlignment="Left" BorderThickness="0">
+                <Button Content="View Borrowing" 
+                 Background="#3498db" Foreground="White"
+                    Margin="10,87,0,28" Padding="15,8"
+                    FontSize="14" FontWeight="Medium"
+                    HorizontalAlignment="Left" BorderThickness="0"
+                    Click="ViewBorrowing_Click" Grid.RowSpan="2">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="4"/>

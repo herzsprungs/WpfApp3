@@ -93,7 +93,7 @@
                 <Grid>
                     <!-- Background Video with Blur -->
                     <MediaElement x:Name="BackgroundVideo" 
-                                  Source="C:\Users\23-0144c\Downloads\7513671-uhd_3840_2160_24fps (1).mp4" 
+                                  Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" 
                                   Stretch="UniformToFill"
                                   LoadedBehavior="Play"
                                   Volume="0">

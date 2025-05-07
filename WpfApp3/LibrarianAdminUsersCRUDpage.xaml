@@ -297,173 +297,82 @@
         </Style>
     </Page.Resources>
 
-    <Grid Margin="0">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Page Header -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+        <StackPanel Grid.Row="0" Margin="0,0,0,15">
             <TextBlock Text="User Management" FontSize="24" FontWeight="SemiBold" Foreground="#2c3e50"/>
-            <TextBlock Text="Add, edit, and manage system users and their access levels" FontSize="14" Foreground="#7f8c8d" Margin="0,5,0,0"/>
+            <TextBlock Text="Add, edit, and manage system users and their access levels" 
+                       FontSize="14" Foreground="#7f8c8d" Margin="0,5,0,0"/>
         </StackPanel>
 
         <!-- Add New User Section -->
-        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="20" 
-                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,15">
+        <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15" 
+                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,10">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Add New User" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50" Margin="0,0,0,15"/>
+                <TextBox x:Name="txtNewUsername" Grid.Column="0" Style="{StaticResource ModernTextBox}" 
+         Tag="Username" Margin="0,0,10,0"/>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
+                <PasswordBox x:Name="txtNewPass" Grid.Column="1" Style="{StaticResource ModernPasswordBox}" 
+             Tag="Password" Margin="0,0,10,0"/>
 
-                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <TextBlock Text="User ID" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <TextBox x:Name="txtNewId" Style="{StaticResource ModernTextBox}" 
-                               />
-                    </StackPanel>
+                <ComboBox x:Name="cmbRole"
+          Grid.Column="2"
+          SelectedIndex="0"
+          Margin="0,0,10,0"
+          Foreground="Black">
+                    <ComboBoxItem Content="Clerical"/>
+                    <ComboBoxItem Content="Librarian"/>
+                    <ComboBoxItem Content="Student"/>
+                </ComboBox>
 
-                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                        <TextBlock Text="Password" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <PasswordBox x:Name="txtNewPass" Style="{StaticResource ModernPasswordBox}"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="2" Margin="0,0,10,0">
-                        <TextBlock Text="Full Name" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <TextBox x:Name="txtNewName" Style="{StaticResource ModernTextBox}" 
-                                />
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="3" Margin="0,0,10,0">
-                        <TextBlock Text="Role" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <ComboBox x:Name="cmbRole" Style="{StaticResource ModernComboBox}" SelectedIndex="0">
-                            <ComboBoxItem Content="Admin"/>
-                            <ComboBoxItem Content="Librarian"/>
-                            <ComboBoxItem Content="Student"/>
-                        </ComboBox>
-                    </StackPanel>
-
-                    <Button Grid.Column="4" Content="➕ ADD" Style="{StaticResource SuccessButton}" 
-                            Margin="0,18,0,0" Height="40" />
-                </Grid>
+                <Button Grid.Column="3" Content="➕ ADD" Style="{StaticResource SuccessButton}" 
+        Height="40" Click="AddUser_Click"/>
             </Grid>
         </Border>
 
-        <!-- Edit User Section -->
-        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="20" 
-                BorderBrush="#e0e0e0" BorderThickness="1" Margin="0,0,0,20">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Text="Edit User" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50" Margin="0,0,0,15"/>
-
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <TextBlock Text="User ID (Read-only)" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <TextBox x:Name="txtEditId" Style="{StaticResource ModernTextBox}" IsEnabled="False"
-                                Background="#f0f0f0"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                        <TextBlock Text="New Password" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <PasswordBox x:Name="txtEditPass" Style="{StaticResource ModernPasswordBox}"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="2" Margin="0,0,10,0">
-                        <TextBlock Text="Full Name" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <TextBox x:Name="txtEditName" Style="{StaticResource ModernTextBox}"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="3" Margin="0,0,10,0">
-                        <TextBlock Text="Role (Read-only)" FontSize="12" Margin="5,0,0,5" Foreground="#7f8c8d"/>
-                        <ComboBox x:Name="cmbEditRole" Style="{StaticResource ModernComboBox}" IsEnabled="False"
-                                Background="#f0f0f0"/>
-                    </StackPanel>
-
-                    <Button Grid.Column="4" Content="💾 SAVE" Style="{StaticResource PrimaryButton}" 
-                            Margin="0,18,0,0" Height="40" />
-                </Grid>
-            </Grid>
-        </Border>
-
-        <!-- User List -->
+        <!-- User List with Horizontal Scrolling -->
         <Border Grid.Row="3" Background="White" CornerRadius="10" 
                 BorderBrush="#e0e0e0" BorderThickness="1">
-            <Grid Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Margin="0,0,0,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="User List" FontSize="16" FontWeight="SemiBold" Foreground="#2c3e50"/>
-
-                    <StackPanel Grid.Column="1" Orientation="Horizontal">
-                        <TextBox Width="200" Style="{StaticResource ModernTextBox}" Height="36" 
-                                 Margin="0,0,10,0"/>
-                        <ComboBox Width="120" Height="36" Style="{StaticResource ModernComboBox}" SelectedIndex="0">
-                            <ComboBoxItem Content="All Roles"/>
-                            <ComboBoxItem Content="Admin"/>
-                            <ComboBoxItem Content="Librarian"/>
-                            <ComboBoxItem Content="Student"/>
-                        </ComboBox>
-                    </StackPanel>
-                </Grid>
-
-                <DataGrid Grid.Row="1" x:Name="usersDataGrid" AutoGenerateColumns="False" Margin="0,5,0,-20"
-                          IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False"
+          IsReadOnly="True" SelectionMode="Single" 
+          HeadersVisibility="Column" RowHeight="35"
+          SelectionChanged="UsersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="USER ID" Binding="{Binding Id}" Width="1.2*"/>
-                        <DataGridTextColumn Header="FULL NAME" Binding="{Binding Name}" Width="2*"/>
-                        <DataGridTextColumn Header="ROLE" Binding="{Binding Role}" Width="1*"/>
-                        <DataGridTextColumn Header="LAST LOGIN" Binding="{Binding LastLogin}" Width="1.5*"/>
-                        <DataGridTextColumn Header="STATUS" Binding="{Binding Status}" Width="0.8*"/>
-                        <DataGridTemplateColumn Header="ACTIONS" Width="0.8*">
+                        <DataGridTextColumn Header="USER ID" Binding="{Binding UserID}" Width="120"/>
+                        <DataGridTextColumn Header="USERNAME" Binding="{Binding Username}" Width="200"/>
+                        <DataGridTextColumn Header="PASSWORD HASH" Binding="{Binding PasswordHash}" Width="200"/>
+                        <DataGridTextColumn Header="ROLE" Binding="{Binding Role}" Width="100"/>
+                        <DataGridTemplateColumn Header="ACTIONS" Width="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource EditButtonStyle}" />
-                                        <Button Style="{StaticResource DeleteButtonStyle}" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Content="✏️" Style="{StaticResource EditButtonStyle}" 
+                                Click="EditUser_Click" Tag="{Binding UserID}"/>
+                                        <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
+                                Click="DeleteUser_Click" Tag="{Binding UserID}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
+            </ScrollViewer>
         </Border>
-
-        
     </Grid>
 </Page>

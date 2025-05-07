@@ -19,6 +19,7 @@ namespace WpfApp3
     /// </summary>
     public partial class StudentWindow : Window
     {
+        public string loggedInStudentId; // field to store student ID
         public StudentWindow()
         {
             InitializeComponent();
@@ -35,9 +36,10 @@ namespace WpfApp3
                     break;
                 case "BorrowBooks":
                     MainFrame.Navigate(new StudentViewBorrowBooksPage());
+
                     break;
                 case "LibraryVisits":
-                    MainFrame.Navigate(new StudentViewsLibraryVisitPage());
+                    MainFrame.Navigate(new StudentViewsLibraryVisitPage(loggedInStudentId));
                     break;
             }
         }
