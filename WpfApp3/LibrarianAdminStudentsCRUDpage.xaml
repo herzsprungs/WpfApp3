@@ -31,7 +31,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                 <Setter Property="BorderThickness" Value="1.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -88,11 +88,11 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsChecked" Value="True">
-                                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                                 <Setter Property="BorderThickness" Value="1.5"/>
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
@@ -132,7 +132,7 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsHighlighted" Value="True">
-                                            <Setter Property="Background" Value="#2980b9"/>
+                                            <Setter Property="Background" Value="#FF2C3E50"/>
                                             <Setter Property="Foreground" Value="White"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
@@ -146,7 +146,7 @@
 
      
         <Style x:Key="SuccessButton" TargetType="Button">
-            <Setter Property="Background" Value="#27ae60"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Height" Value="40"/>

@@ -17,8 +17,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-       
-        <Border Grid.Row="0" Background="#3498db" Padding="20 15">
+
+        <Border Grid.Row="0" Background="#FF2C3E50" Padding="20 15">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="📚" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
                 <TextBlock Text="Campus Library" FontSize="24" FontWeight="SemiBold" Foreground="White"/>
@@ -67,7 +67,7 @@
                         <StackPanel>
                             <TextBlock Text="Time In" FontSize="16" FontWeight="Medium" Foreground="#2c3e50"/>
                             <TextBlock Name="TimeInValue" Text="--:-- --" FontSize="20" FontWeight="SemiBold" Foreground="#27ae60" Margin="0,10,0,0"/>
-                            <Button Name="TimeInButton" Content="Check In" Height="35" Background="#27ae60" Foreground="White" 
+                            <Button Name="TimeInButton" Content="Check In" Height="35" Background="#FF186B3B" Foreground="White" 
                                     FontSize="14" FontWeight="Medium" Margin="0,10,0,0" Padding="15,5" BorderThickness="0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -83,7 +83,7 @@
                         <StackPanel>
                             <TextBlock Text="Time Out" FontSize="16" FontWeight="Medium" Foreground="#2c3e50"/>
                             <TextBlock Name="TimeOutValue" Text="--:-- --" FontSize="20" FontWeight="SemiBold" Foreground="#e74c3c" Margin="0,10,0,0"/>
-                            <Button Name="TimeOutButton" Content="Check Out" Height="35" Background="#e74c3c" Foreground="White" 
+                            <Button Name="TimeOutButton" Content="Check Out" Height="35" Background="#FFB73A2D" Foreground="White" 
                                     FontSize="14" FontWeight="Medium" Margin="0,10,0,0" Padding="15,5" BorderThickness="0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -118,8 +118,8 @@
             </Grid>
         </Border>
 
-      
-        <Border Grid.Row="3" Background="#34495e" Padding="15">
+
+        <Border Grid.Row="3" Background="#FF2C3E50" Padding="15">
             <TextBlock Text="© 2025 Campus Library System" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
         </Border>
     </Grid>

@@ -31,7 +31,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                 <Setter Property="BorderThickness" Value="1.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -62,7 +62,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                 <Setter Property="BorderThickness" Value="1.5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -115,7 +115,7 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsChecked" Value="True">
-                                                <Setter Property="BorderBrush" Value="#2980b9"/>
+                                                <Setter Property="BorderBrush" Value="#FF2C3E50"/>
                                                 <Setter Property="BorderThickness" Value="1.5"/>
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
@@ -144,7 +144,7 @@
 
        
         <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#2980b9"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Template">
@@ -172,7 +172,7 @@
         </Style>
 
         <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#27ae60"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Template">

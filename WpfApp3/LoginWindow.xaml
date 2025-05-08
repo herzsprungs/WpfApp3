@@ -124,9 +124,9 @@
                    
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Welcome Back" 
-                                   FontSize="28" 
+                                   FontSize="36.6" 
                                    FontWeight="Light"
-                                   FontFamily="Segoe UI"
+                                   FontFamily="Mongolian Baiti"
                                    Foreground="#2C3E50" 
                                    Margin="0,0,0,10"
                                    HorizontalAlignment="Center"/>
@@ -136,17 +136,17 @@
                                    FontWeight="Regular"
                                    Foreground="#95A5A6" 
                                    Margin="0,0,0,30"
-                                   HorizontalAlignment="Center"/>
+                                   HorizontalAlignment="Center" FontFamily="Mongolian Baiti"/>
 
                         <TextBlock Text="USERNAME" 
                                    FontSize="11" 
                                    FontWeight="SemiBold"
-                                   Foreground="#95A5A6" 
-                                   Margin="0,0,0,5"/>
+                                   Foreground="#FF2C3E50" 
+                                   Margin="0,0,0,5" FontFamily="Mongolian Baiti"/>
 
                         <TextBox x:Name="txtUsername" 
                                 Style="{StaticResource ElegantTextBox}"
-                                Margin="0,0,0,20">
+                                Margin="0,0,0,20" FontFamily="Mongolian Baiti">
                             <TextBox.InputBindings>
                                 <KeyBinding Key="Enter" Command="{Binding LoginCommand}"/>
                             </TextBox.InputBindings>
@@ -155,8 +155,8 @@
                         <TextBlock Text="PASSWORD" 
                                    FontSize="11" 
                                    FontWeight="SemiBold"
-                                   Foreground="#95A5A6" 
-                                   Margin="0,0,0,5"/>
+                                   Foreground="#FF2C3E50" 
+                                   Margin="0,0,0,5" FontFamily="Mongolian Baiti"/>
 
                         <PasswordBox x:Name="txtPassword" 
                                      Style="{StaticResource ElegantPasswordBox}"
@@ -165,12 +165,12 @@
                         <Button x:Name="btnLogin" 
                                 Content="SIGN IN" 
                                 Style="{StaticResource ElegantButton}"
-                                Background="#3498DB"
+                                Background="#FF2C3E50"
                                 FontSize="13"
                                 FontWeight="SemiBold"
                                 Margin="0,15,0,30"
                                 Height="45"
-                                Click="btnLogin_Click">
+                                Click="btnLogin_Click" FontFamily="Mongolian Baiti">
                             <Button.Effect>
                                 <DropShadowEffect ShadowDepth="1" 
                                                   BlurRadius="10" 
@@ -185,22 +185,22 @@
                                    FontWeight="SemiBold"
                                    Foreground="#95A5A6" 
                                    Margin="0,15,0,10"
-                                   HorizontalAlignment="Center"/>
+                                   HorizontalAlignment="Center" FontFamily="Mongolian Baiti"/>
 
                         <UniformGrid Rows="1" Columns="3" Margin="0,10,0,0">
                             <Button Content="Student" 
                                     Style="{StaticResource RoleButton}"
-                                    Background="#3498DB" 
+                                    Background="#FF2C3E50" 
                                     Click="StudentTest_Click"/>
 
                             <Button Content="Clerical" 
                                     Style="{StaticResource RoleButton}"
-                                    Background="#2ECC71" 
+                                    Background="#FF2C3E50" 
                                     Click="ClericalTest_Click"/>
 
                             <Button Content="Librarian" 
                                     Style="{StaticResource RoleButton}"
-                                    Background="#E74C3C" 
+                                    Background="#FF2C3E50" 
                                     Click="LibrarianTest_Click"/>
                         </UniformGrid>
                     </StackPanel>

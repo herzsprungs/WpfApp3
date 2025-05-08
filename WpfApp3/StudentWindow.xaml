@@ -115,41 +115,41 @@
 
                        
                         <StackPanel VerticalAlignment="Center" Margin="20,20,20,10">
-                            <TextBlock Text="STUDENTS USERS" FontWeight="Bold" FontSize="22" Foreground="White" Width="233"/>
+                            <TextBlock Text="STUDENTS USERS" FontWeight="Bold" FontSize="22" Foreground="White" Width="233" FontFamily="Mongolian Baiti"/>
                             <TextBlock Text="Management System" FontSize="14" Foreground="#ccffffff" Margin="0,5,0,0" Width="232"/>
                         </StackPanel>
 
                         
                         <StackPanel Grid.Row="1" Margin="15,20">
-                            <TextBlock Text="MENU" Foreground="#99ffffff" FontSize="12" Margin="5,0,0,15"/>
+                            <TextBlock Text="MENU" Foreground="#99ffffff" FontSize="12" Margin="5,0,0,15" FontFamily="Mongolian Baiti"/>
 
                             <Button Style="{StaticResource ModernButton}" 
                                     Content="📚  Available Books" 
                                     Margin="0,10" 
                                     Tag="AvailableBooks"
                                     Click="NavButton_Click"
-                                    x:Name="BooksButton"/>
+                                    x:Name="BooksButton" Background="#FF2C3E50"/>
 
                             <Button Style="{StaticResource ModernButton}" 
                                     Content="⏱️  Library Visits" 
                                     Margin="0,10" 
                                     Tag="LibraryVisits"
                                     Click="NavButton_Click"
-                                    x:Name="VisitsButton"/>
+                                    x:Name="VisitsButton" Background="#FF2C3E50"/>
 
                             <Button Style="{StaticResource ModernButton}" 
                                     Content="📖  Borrow Books" 
                                     Margin="0,10" 
                                     Tag="BorrowBooks"
                                     Click="NavButton_Click"
-                                    x:Name="BorrowButton"/>
+                                    x:Name="BorrowButton" Background="#FF2C3E50"/>
                         </StackPanel>
 
                        
                         <Button Grid.Row="2" 
                                 Style="{StaticResource ModernButton}" 
                                 Content="🚪  Logout" 
-                                Background="#e74c3c"
+                                Background="#FF8E2A1F"
                                 Click="Logout_Click"
                                 Margin="15,0,15,30"/>
                     </Grid>
@@ -174,10 +174,11 @@
                       
                         <TextBlock x:Name="PageTitle" 
                                    Text="Dashboard" 
-                                   FontSize="20" 
+                                   FontSize="30
+                                   " 
                                    FontWeight="SemiBold" 
                                    VerticalAlignment="Center"
-                                   Margin="20,0"/>
+                                   Margin="20,0" FontFamily="Mongolian Baiti"/>
 
 
                     </Grid>
@@ -190,7 +191,7 @@
                        Margin="20"/>
             </Grid>
 
-            
+            <!-- Make the top bar draggable -->
             <Border Grid.Column="1" 
                     Background="Transparent" 
                     Height="60" 

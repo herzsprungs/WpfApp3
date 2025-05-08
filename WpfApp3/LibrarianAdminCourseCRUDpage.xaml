@@ -42,7 +42,7 @@
 
         
         <Style x:Key="AddCourseButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
-            <Setter Property="Background" Value="#27ae60"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -57,10 +57,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#219955"/>
+                                <Setter Property="Background" Value="#FF2C3E50"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#1e8449"/>
+                                <Setter Property="Background" Value="#FF2C3E50"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -98,7 +98,7 @@
             <Setter Property="Margin" Value="3"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Background" Value="#ffe8e8"/>
-            <Setter Property="Foreground" Value="#e74c3c"/>
+            <Setter Property="Foreground" Value="#FF8E2B21"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -210,7 +210,7 @@
                     </StackPanel>
 
                     <Button x:Name="AddCourseButton" Grid.Column="2" Margin="10,18,0,0" Style="{StaticResource AddCourseButton}" 
-                            Content="➕ Add Course" Height="40" Click="AddCourse_Click"/>
+                            Content="➕ Add Course" Height="40" Click="AddCourse_Click" Background="#FF2C3E50"/>
                 </Grid>
             </Grid>
         </Border>

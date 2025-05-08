@@ -17,8 +17,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        
-        <Border Grid.Row="0" Background="#3498db" Padding="20 15">
+
+        <Border Grid.Row="0" Background="#FF2C3E50" Padding="20 15">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="📚" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
                 <TextBlock Text="Campus Library" FontSize="24" FontWeight="SemiBold" Foreground="White"/>
@@ -65,7 +65,7 @@
                 </Grid>
 
                 <Button Content="View Borrowing" 
-                 Background="#3498db" Foreground="White"
+                 Background="#FF2C3E50" Foreground="White"
                     Margin="10,87,0,28" Padding="15,8"
                     FontSize="14" FontWeight="Medium"
                     HorizontalAlignment="Left" BorderThickness="0"
@@ -79,8 +79,8 @@
             </Grid>
         </Border>
 
-        
-        <Border Grid.Row="3" Background="#34495e" Padding="15">
+
+        <Border Grid.Row="3" Background="#FF2C3E50" Padding="15">
             <TextBlock Text="© 2025 Campus Library System" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
         </Border>
     </Grid>

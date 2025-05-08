@@ -17,7 +17,7 @@
     <Window.Resources>
         
         <Style x:Key="ModernButton" TargetType="Button">
-            <Setter Property="Background" Value="#9b59b6"/>
+            <Setter Property="Background" Value="#FF2C3E50"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
@@ -116,7 +116,7 @@
 
                         
                         <StackPanel VerticalAlignment="Center" Margin="20,20,20,10">
-                            <TextBlock Text="CLERICAL ASSISTANT" FontWeight="Bold" FontSize="22" Foreground="White"/>
+                            <TextBlock Text="CLERIC ASSISTANT" FontWeight="Bold" FontSize="22" Foreground="White" FontFamily="Mongolian Baiti"/>
                             <TextBlock Text="Staff Portal" FontSize="14" Foreground="#ccffffff" Margin="0,5,0,0"/>
                         </StackPanel>
 
@@ -143,7 +143,7 @@
                         <Button Grid.Row="2" 
                                 Style="{StaticResource ModernButton}" 
                                 Content="🚪  Logout" 
-                                Background="#e74c3c"
+                                Background="#FF9C392E"
                                 Click="Logout_Click"
                                 Margin="15,0,15,30"/>
                     </Grid>
@@ -167,27 +167,15 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock x:Name="PageTitle" 
-                                   Text="Admin Dashboard" 
-                                   FontSize="20" 
+                                   Text="Dashboard" 
+                                   FontSize="30
+                                   " 
                                    FontWeight="SemiBold" 
                                    VerticalAlignment="Center"
-                                   Margin="20,0"/>
+                                   Margin="20,0" FontFamily="Mongolian Baiti"/>
 
                         
-                        <StackPanel Grid.Column="1" 
-                                    Orientation="Horizontal" 
-                                    VerticalAlignment="Center"
-                                    Margin="0,0,20,0">
-                            <Ellipse Width="32" Height="32">
-                                <Ellipse.Fill>
-                                    <SolidColorBrush Color="#9b59b6"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                            <TextBlock Text="Admin" 
-                                       VerticalAlignment="Center" 
-                                       Margin="10,0,0,0"
-                                       FontWeight="Medium"/>
-                        </StackPanel>
+                       
 
                        
                     </Grid>
