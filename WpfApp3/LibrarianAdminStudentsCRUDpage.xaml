@@ -333,25 +333,21 @@
                 BorderBrush="#e0e0e0" BorderThickness="1">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <DataGrid x:Name="studentsDataGrid" AutoGenerateColumns="False"
-                          IsReadOnly="True" SelectionMode="Single" 
-                          HeadersVisibility="Column" RowHeight="45"
-                          SelectionChanged="StudentsDataGrid_SelectionChanged">
+          IsReadOnly="False" SelectionMode="Single" 
+          HeadersVisibility="Column" RowHeight="45"
+          CellEditEnding="StudentsDataGrid_CellEditEnding">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding N_StudentID}" Width="120"/>
-                        <DataGridTextColumn Header="FIRST NAME" Binding="{Binding N_FirstName}" Width="150"/>
-                        <DataGridTextColumn Header="LAST NAME" Binding="{Binding N_LastName}" Width="150"/>
-                        <DataGridTextColumn Header="EMAIL" Binding="{Binding N_Email}" Width="200"/>
-                        <DataGridTextColumn Header="PHONE" Binding="{Binding N_PhoneNumber}" Width="120"/>
-                        <DataGridTextColumn Header="COURSE" Binding="{Binding C_CourseID}" Width="100"/>
+                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding N_StudentID}" Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="FIRST NAME" Binding="{Binding N_FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                        <DataGridTextColumn Header="LAST NAME" Binding="{Binding N_LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                        <DataGridTextColumn Header="EMAIL" Binding="{Binding N_Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <DataGridTextColumn Header="PHONE" Binding="{Binding N_PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="120"/>
+                        <DataGridTextColumn Header="COURSE" Binding="{Binding C_CourseID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <DataGridTemplateColumn Header="ACTIONS" Width="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Content="✏️" Style="{StaticResource EditButtonStyle}" 
-                                                Click="EditStudent_Click" Tag="{Binding N_StudentID}"/>
-                                        <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
-                                                Click="DeleteStudent_Click" Tag="{Binding N_StudentID}"/>
-                                    </StackPanel>
+                                    <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
+                            Click="DeleteStudent_Click" Tag="{Binding N_StudentID}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

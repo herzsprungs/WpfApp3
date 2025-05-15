@@ -49,24 +49,41 @@ namespace WpfApp3
         {
             if (!ValidateBookInputs()) return;
 
-            var newISBN = new ISBN
+            string isbnText = txtISBN.Text.Trim();
+
+            // Check if the ISBN already exists in the database
+            var existingISBN = db.ISBNs.FirstOrDefault(i => i.I_ISBNID == isbnText);
+
+            ISBN isbnToUse;
+
+            if (existingISBN != null)
             {
-                I_ISBNID = txtISBN.Text.Trim(),
-                I_BookName = txtBookTitle.Text.Trim(),
-                I_BookAuthor = txtAuthor.Text.Trim(),
-                I_PublicationYear = txtPubYear.Text.Trim()
-            };
+                // Reuse the existing ISBN
+                isbnToUse = existingISBN;
+            }
+            else
+            {
+                // Create a new ISBN object to insert
+                isbnToUse = new ISBN
+                {
+                    I_ISBNID = isbnText,
+                    I_BookName = txtBookTitle.Text.Trim(),
+                    I_BookAuthor = txtAuthor.Text.Trim(),
+                    I_PublicationYear = txtPubYear.Text.Trim()
+                };
+
+                db.ISBNs.InsertOnSubmit(isbnToUse);
+            }
 
             var newBook = new Book
             {
-                B_BookID = Guid.NewGuid().ToString(), 
-                ISBN = newISBN,
-                G_GenreID = "1" 
+                B_BookID = Guid.NewGuid().ToString(),
+                ISBN = isbnToUse,
+                G_GenreID = "1" // Default GenreID
             };
 
             try
             {
-                db.ISBNs.InsertOnSubmit(newISBN);
                 db.Books.InsertOnSubmit(newBook);
                 db.SubmitChanges();
 

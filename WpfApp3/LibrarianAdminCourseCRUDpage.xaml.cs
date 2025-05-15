@@ -113,9 +113,28 @@ namespace WpfApp3
                 {
                     if (MessageBox.Show($"Are you sure you want to delete '{course.C_CourseName}'?", "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        db.Courses.DeleteOnSubmit(course);
-                        db.SubmitChanges();
-                        LoadCourses();
+                        try
+                        {
+                            db.Courses.DeleteOnSubmit(course);
+                            db.SubmitChanges();
+                            LoadCourses();
+                        }
+                        catch (System.Data.SqlClient.SqlException ex)
+                        {
+                            // Error code 547 = foreign key constraint violation in SQL Server
+                            if (ex.Number == 547)
+                            {
+                                MessageBox.Show("Cannot delete this course because there are students enrolled in it.", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show("An unexpected database error occurred:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An unexpected error occurred:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                 }
             }

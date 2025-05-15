@@ -350,20 +350,18 @@
                 BorderBrush="#e0e0e0" BorderThickness="1">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False"
-          IsReadOnly="True" SelectionMode="Single" 
+          IsReadOnly="False" SelectionMode="Single" 
           HeadersVisibility="Column" RowHeight="35"
-          SelectionChanged="UsersDataGrid_SelectionChanged">
+          CellEditEnding="UsersDataGrid_CellEditEnding">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="USER ID" Binding="{Binding UserID}" Width="120"/>
-                        <DataGridTextColumn Header="USERNAME" Binding="{Binding Username}" Width="200"/>
-                        <DataGridTextColumn Header="PASSWORD HASH" Binding="{Binding PasswordHash}" Width="200"/>
-                        <DataGridTextColumn Header="ROLE" Binding="{Binding Role}" Width="100"/>
+                        <DataGridTextColumn Header="USER ID" Binding="{Binding UserID}" Width="120" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="USERNAME" Binding="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <DataGridTextColumn Header="PASSWORD HASH" Binding="{Binding PasswordHash, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <DataGridTextColumn Header="ROLE" Binding="{Binding Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <DataGridTemplateColumn Header="ACTIONS" Width="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Content="✏️" Style="{StaticResource EditButtonStyle}" 
-                                Click="EditUser_Click" Tag="{Binding UserID}"/>
                                         <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
                                 Click="DeleteUser_Click" Tag="{Binding UserID}"/>
                                     </StackPanel>

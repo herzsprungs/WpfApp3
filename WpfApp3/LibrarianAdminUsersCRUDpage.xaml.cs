@@ -15,21 +15,21 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    
+
     public partial class LibrarianAdminUsersCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
-        private Users_table _selectedUser;
 
         public LibrarianAdminUsersCRUDpage()
         {
             InitializeComponent();
             LoadUsers();
+            usersDataGrid.CellEditEnding += UsersDataGrid_CellEditEnding;
         }
 
         public class UserDisplay
         {
-            public int UserID { get; set; }  
+            public int UserID { get; set; }
             public string Username { get; set; }
             public string Role { get; set; }
             public string PasswordHash { get; set; }
@@ -42,7 +42,7 @@ namespace WpfApp3
                 {
                     UserID = u.UserID,
                     Username = u.Username,
-                    PasswordHash = u.PasswordHash, 
+                    PasswordHash = u.PasswordHash,
                     Role = u.Role
                 }).ToList();
 
@@ -58,14 +58,13 @@ namespace WpfApp3
                 return;
             }
 
-          
             int nextUserId = db.Users_tables.Any()
                 ? db.Users_tables.Max(u => u.UserID) + 1
                 : 1;
 
             var newUser = new Users_table
             {
-                UserID = nextUserId,  
+                UserID = nextUserId,
                 Username = txtNewUsername.Text.Trim(),
                 PasswordHash = HashPassword(txtNewPass.Password),
                 Role = (cmbRole.SelectedItem as ComboBoxItem)?.Content.ToString()
@@ -84,21 +83,34 @@ namespace WpfApp3
             }
         }
 
-        private void EditUser_Click(object sender, RoutedEventArgs e)
+        private void UsersDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (sender is Button btn && btn.Tag != null)
+            if (e.EditAction == DataGridEditAction.Commit)
             {
-                int userId;
-                if (int.TryParse(btn.Tag.ToString(), out userId))  // Convert userId from string to int
+                var editedItem = e.Row.Item as UserDisplay;
+                if (editedItem != null)
                 {
-                    _selectedUser = db.Users_tables.FirstOrDefault(u => u.UserID == userId);
-
-                    if (_selectedUser != null)
+                    var user = db.Users_tables.FirstOrDefault(u => u.UserID == editedItem.UserID);
+                    if (user != null)
                     {
-                        
-                        txtNewUsername.Text = _selectedUser.Username;
-                        cmbRole.SelectedValue = _selectedUser.Role;
-                        MessageBox.Show($"Editing user: {_selectedUser.Username}");
+                        // Update the properties that were edited
+                        user.Username = editedItem.Username;
+                        user.Role = editedItem.Role;
+
+                        // Only update password if it was changed (you might want to add a special editor for this)
+                        // user.PasswordHash = HashPassword(editedItem.PasswordHash);
+
+                        try
+                        {
+                            db.SubmitChanges();
+                            MessageBox.Show("User updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error updating user: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            // Refresh the data to show the original values
+                            LoadUsers();
+                        }
                     }
                 }
             }
@@ -109,7 +121,7 @@ namespace WpfApp3
             if (sender is Button btn && btn.Tag != null)
             {
                 int userId;
-                if (int.TryParse(btn.Tag.ToString(), out userId))  
+                if (int.TryParse(btn.Tag.ToString(), out userId))
                 {
                     var user = db.Users_tables.FirstOrDefault(u => u.UserID == userId);
 
@@ -124,14 +136,9 @@ namespace WpfApp3
             }
         }
 
-        private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _selectedUser = usersDataGrid.SelectedItem as Users_table;
-        }
-
         private string HashPassword(string password)
         {
-           
+            // Implement proper password hashing here
             return password;
         }
 

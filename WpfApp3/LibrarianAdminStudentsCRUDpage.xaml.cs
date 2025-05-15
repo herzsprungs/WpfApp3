@@ -19,13 +19,13 @@ namespace WpfApp3
     public partial class LibrarianAdminStudentsCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
-        private NorthVilleStudent _selectedStudent;
 
         public LibrarianAdminStudentsCRUDpage()
         {
             InitializeComponent();
             LoadStudents();
             LoadCourses();
+            studentsDataGrid.CellEditEnding += StudentsDataGrid_CellEditEnding;
         }
 
         public class StudentDisplay
@@ -101,23 +101,35 @@ namespace WpfApp3
             }
         }
 
-        private void EditStudent_Click(object sender, RoutedEventArgs e)
+        private void StudentsDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (sender is Button btn && btn.Tag != null)
+            if (e.EditAction == DataGridEditAction.Commit)
             {
-                string studentId = btn.Tag.ToString();
-                _selectedStudent = db.NorthVilleStudents.FirstOrDefault(s => s.N_StudentID == studentId);
-
-                if (_selectedStudent != null)
+                var editedItem = e.Row.Item as StudentDisplay;
+                if (editedItem != null)
                 {
-                    txtStudentID.Text = _selectedStudent.N_StudentID;
-                    txtFirstName.Text = _selectedStudent.N_FirstName;
-                    txtLastName.Text = _selectedStudent.N_LastName;
-                    txtEmail.Text = _selectedStudent.N_Email;
-                    txtPhone.Text = _selectedStudent.N_PhoneNumber;
-                    cmbCourse.SelectedValue = _selectedStudent.C_CourseID;
+                    var student = db.NorthVilleStudents.FirstOrDefault(s => s.N_StudentID == editedItem.N_StudentID);
+                    if (student != null)
+                    {
+                        // Update the properties that were edited
+                        student.N_FirstName = editedItem.N_FirstName;
+                        student.N_LastName = editedItem.N_LastName;
+                        student.N_Email = editedItem.N_Email;
+                        student.N_PhoneNumber = editedItem.N_PhoneNumber;
+                        student.C_CourseID = editedItem.C_CourseID;
 
-                    MessageBox.Show($"Editing student: {_selectedStudent.N_StudentID}");
+                        try
+                        {
+                            db.SubmitChanges();
+                            MessageBox.Show("Student updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error updating student: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            // Refresh the data to show the original values
+                            LoadStudents();
+                        }
+                    }
                 }
             }
         }
@@ -136,11 +148,6 @@ namespace WpfApp3
                     LoadStudents();
                 }
             }
-        }
-
-        private void StudentsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _selectedStudent = studentsDataGrid.SelectedItem as NorthVilleStudent;
         }
 
         private void ClearForm()

@@ -15,17 +15,17 @@ using System.Windows.Shapes;
 
 namespace WpfApp3
 {
-    
+
     public partial class LibrarianAdminTransactionCRUDpage : Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
-        private BorrowTransaction _selectedTransaction;
 
         public LibrarianAdminTransactionCRUDpage()
         {
             InitializeComponent();
             LoadTransactions();
-            GenerateNextTransactionId(); 
+            GenerateNextTransactionId();
+            transactionsDataGrid.CellEditEnding += TransactionsDataGrid_CellEditEnding;
         }
 
         public class TransactionDisplay
@@ -68,7 +68,7 @@ namespace WpfApp3
                 N_StudentID = txtStudentID.Text.Trim(),
                 T_BorrowDate = txtBorrowDate.Text.Trim(),
                 T_ReturnDate = txtReturnDate.Text.Trim(),
-                T_TransactionNote = "Borrowed" 
+                T_TransactionNote = "Borrowed"
             };
 
             try
@@ -84,21 +84,34 @@ namespace WpfApp3
             }
         }
 
-        private void EditTransaction_Click(object sender, RoutedEventArgs e)
+        private void TransactionsDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (sender is Button btn && btn.Tag != null)
+            if (e.EditAction == DataGridEditAction.Commit)
             {
-                string transactionId = btn.Tag.ToString();
-                _selectedTransaction = db.BorrowTransactions.FirstOrDefault(t => t.T_TransactionID == transactionId);
-
-                if (_selectedTransaction != null)
+                var editedItem = e.Row.Item as TransactionDisplay;
+                if (editedItem != null)
                 {
-                    txtTransactionID.Text = _selectedTransaction.T_TransactionID;
-                    txtStudentID.Text = _selectedTransaction.N_StudentID;
-                    txtBorrowDate.Text = _selectedTransaction.T_BorrowDate;
-                    txtReturnDate.Text = _selectedTransaction.T_ReturnDate;
+                    var transaction = db.BorrowTransactions.FirstOrDefault(t => t.T_TransactionID == editedItem.T_TransactionID);
+                    if (transaction != null)
+                    {
+                        // Update the properties that were edited
+                        transaction.N_StudentID = editedItem.N_StudentID;
+                        transaction.T_BorrowDate = editedItem.T_BorrowDate;
+                        transaction.T_ReturnDate = editedItem.T_ReturnDate;
+                        transaction.T_TransactionNote = editedItem.T_TransactionNote;
 
-                    MessageBox.Show($"Editing transaction: {_selectedTransaction.T_TransactionID}");
+                        try
+                        {
+                            db.SubmitChanges();
+                            MessageBox.Show("Transaction updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error updating transaction: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            // Refresh the data to show the original values
+                            LoadTransactions();
+                        }
+                    }
                 }
             }
         }
@@ -119,21 +132,14 @@ namespace WpfApp3
             }
         }
 
-        private void TransactionsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _selectedTransaction = transactionsDataGrid.SelectedItem as BorrowTransaction;
-        }
-
         private void GenerateNextTransactionId()
         {
-            
             var lastTransaction = db.BorrowTransactions
                 .OrderByDescending(t => t.T_TransactionID)
                 .FirstOrDefault();
 
             if (lastTransaction != null && lastTransaction.T_TransactionID.StartsWith("T"))
             {
-               
                 if (int.TryParse(lastTransaction.T_TransactionID.Substring(1), out int lastNumber))
                 {
                     txtTransactionID.Text = $"T{(lastNumber + 1).ToString("D3")}";
@@ -141,13 +147,12 @@ namespace WpfApp3
                 }
             }
 
-            
             txtTransactionID.Text = "T001";
-        } 
+        }
 
         private void ClearForm()
         {
-            GenerateNextTransactionId(); 
+            GenerateNextTransactionId();
             txtStudentID.Clear();
             txtBorrowDate.Clear();
             txtReturnDate.Clear();

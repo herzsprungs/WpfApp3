@@ -348,25 +348,20 @@
                 BorderBrush="#e0e0e0" BorderThickness="1">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <DataGrid x:Name="transactionsDataGrid" AutoGenerateColumns="False"
-          IsReadOnly="True" SelectionMode="Single" 
+          IsReadOnly="False" SelectionMode="Single" 
           HeadersVisibility="Column" RowHeight="45"
-          SelectionChanged="TransactionsDataGrid_SelectionChanged">
+          CellEditEnding="TransactionsDataGrid_CellEditEnding">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="TRANSACTION ID" Binding="{Binding T_TransactionID}" Width="150"/>
-                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding N_StudentID}" Width="120"/>
-                        <DataGridTextColumn Header="BORROW DATE" Binding="{Binding T_BorrowDate}" Width="150"/>
-
-                        
-
+                        <DataGridTextColumn Header="TRANSACTION ID" Binding="{Binding T_TransactionID}" Width="150" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="STUDENT ID" Binding="{Binding N_StudentID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="120"/>
+                        <DataGridTextColumn Header="BORROW DATE" Binding="{Binding T_BorrowDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                        <DataGridTextColumn Header="RETURN DATE" Binding="{Binding T_ReturnDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                        <DataGridTextColumn Header="STATUS" Binding="{Binding T_TransactionNote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="120"/>
                         <DataGridTemplateColumn Header="ACTIONS" Width="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Content="✏️" Style="{StaticResource EditButtonStyle}" 
-                                Click="EditTransaction_Click" Tag="{Binding T_TransactionID}"/>
-                                        <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
-                                Click="DeleteTransaction_Click" Tag="{Binding T_TransactionID}"/>
-                                    </StackPanel>
+                                    <Button Content="🗑️" Style="{StaticResource DeleteButtonStyle}" 
+                            Click="DeleteTransaction_Click" Tag="{Binding T_TransactionID}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
