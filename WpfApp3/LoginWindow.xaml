@@ -157,7 +157,7 @@
                 <!-- Header -->
 
                 <!-- Username Field -->
-                <TextBlock Text="Username" Style="{StaticResource FormLabel}" Foreground="White"/>
+                <TextBlock Text="Usernamhhdhhdhde" Style="{StaticResource FormLabel}" Foreground="White"/>
                 <TextBox x:Name="txtUsername" Style="{StaticResource TransparentBorderedTextBox}" BorderBrush="White"/>
 
                 <!-- Password Field -->
