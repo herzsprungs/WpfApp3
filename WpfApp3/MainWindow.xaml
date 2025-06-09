@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Height="500" Width="700"
+        Height="600" Width="900"
         Loaded=" MainWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
@@ -11,18 +11,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <MediaElement Source="C:\Users\reynm\Downloads\7513671-uhd_3840_2160_24fps.mp4" Margin="-147,-53,-80,-38" Grid.RowSpan="2"/>
-
-
-        <ProgressBar IsIndeterminate="True" Width="200" Height="20" Margin="250,271,250,209">
-            <ProgressBar.Foreground>
-                <SolidColorBrush Color="White"/>
-            </ProgressBar.Foreground>
-        </ProgressBar>
-
-
-        <TextBlock Text="Loading..." HorizontalAlignment="Center"
-                   Margin="0,291,0,157" FontStyle="Italic" Foreground="White" FontSize="25" Opacity="0.5"/>
-        <Image Margin="96,152,128,219" Source="/titlenorthville.png" Stretch="Fill"/>
+        <MediaElement Source="C:\Users\matub\Downloads\Simple Login Page Website Desktop Prototype (900 x 600 px) (1).mp4" Margin="-142,0,-138,-29" Grid.RowSpan="2"/>
     </Grid>
 </Window>

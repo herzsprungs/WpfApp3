@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FacultyEvaluation" Class="DataClasses2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=AEON\SQLEXPRESS02;Initial Catalog=FacultyEvaluation;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="WpfApp3.Properties.Settings" SettingsPropertyName="FacultyEvaluationConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AdminFacultyEval" Member="AdminFacultyEvals">
+    <Type Name="AdminFacultyEval">
+      <Column Name="A_AdminID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="A_FirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="A_LastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="A_Position" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="U_UserID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="UserLogin_AdminFacultyEval" Member="UserLogin" ThisKey="U_UserID" OtherKey="U_UserID" Type="UserLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Answer" Member="Answers">
+    <Type Name="Answer">
+      <Column Name="A_AnswerID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="E_EvaluationResponseID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="E_EvaluationQuestionID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="A_Rating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="A_Comment" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="EvaluationQuestion_Answer" Member="EvaluationQuestion" ThisKey="E_EvaluationQuestionID" OtherKey="E_EvaluationQuestionID" Type="EvaluationQuestion" IsForeignKey="true" />
+      <Association Name="EvaluationResponse_Answer" Member="EvaluationResponse" ThisKey="E_EvaluationResponseID" OtherKey="E_EvaluationResponseID" Type="EvaluationResponse" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="C_CourseID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="C_CourseName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Course_Section" Member="Sections" ThisKey="C_CourseID" OtherKey="C_CourseID" Type="Section" />
+      <Association Name="Course_StudentsSouthville" Member="StudentsSouthvilles" ThisKey="C_CourseID" OtherKey="C_CourseID" Type="StudentsSouthville" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EvaluationForm" Member="EvaluationForms">
+    <Type Name="EvaluationForm">
+      <Column Name="E_EvaluationFormID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="E_Title" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="E_Status" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="EvaluationForm_EvaluationQuestion" Member="EvaluationQuestions" ThisKey="E_EvaluationFormID" OtherKey="E_EvaluationFormID" Type="EvaluationQuestion" />
+      <Association Name="EvaluationForm_EvaluationResponse" Member="EvaluationResponses" ThisKey="E_EvaluationFormID" OtherKey="E_EvaluationFormID" Type="EvaluationResponse" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EvaluationQuestion" Member="EvaluationQuestions">
+    <Type Name="EvaluationQuestion">
+      <Column Name="E_EvaluationQuestionID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="E_EvaluationFormID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="E_Question" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="EvaluationQuestion_Answer" Member="Answers" ThisKey="E_EvaluationQuestionID" OtherKey="E_EvaluationQuestionID" Type="Answer" />
+      <Association Name="EvaluationForm_EvaluationQuestion" Member="EvaluationForm" ThisKey="E_EvaluationFormID" OtherKey="E_EvaluationFormID" Type="EvaluationForm" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EvaluationResponse" Member="EvaluationResponses">
+    <Type Name="EvaluationResponse">
+      <Column Name="E_EvaluationResponseID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="S_StudentID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="F_FacultyAssignmentID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="E_EvaluationFormID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="E_Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="EvaluationResponse_Answer" Member="Answers" ThisKey="E_EvaluationResponseID" OtherKey="E_EvaluationResponseID" Type="Answer" />
+      <Association Name="EvaluationForm_EvaluationResponse" Member="EvaluationForm" ThisKey="E_EvaluationFormID" OtherKey="E_EvaluationFormID" Type="EvaluationForm" IsForeignKey="true" />
+      <Association Name="FacultyAssignment_EvaluationResponse" Member="FacultyAssignment" ThisKey="F_FacultyAssignmentID" OtherKey="F_FacultyAssignmentID" Type="FacultyAssignment" IsForeignKey="true" />
+      <Association Name="StudentsSouthville_EvaluationResponse" Member="StudentsSouthville" ThisKey="S_StudentID" OtherKey="S_StudentID" Type="StudentsSouthville" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Faculty" Member="Faculties">
+    <Type Name="Faculty">
+      <Column Name="F_FacultyID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="F_FirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="F_LastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="F_Department" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Faculty_FacultyAssignment" Member="FacultyAssignments" ThisKey="F_FacultyID" OtherKey="F_FacultyID" Type="FacultyAssignment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FacultyAssignment" Member="FacultyAssignments">
+    <Type Name="FacultyAssignment">
+      <Column Name="F_FacultyAssignmentID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="F_FacultyID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="S_SectionID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="F_Semester" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="F_SchoolYear" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="FacultyAssignment_EvaluationResponse" Member="EvaluationResponses" ThisKey="F_FacultyAssignmentID" OtherKey="F_FacultyAssignmentID" Type="EvaluationResponse" />
+      <Association Name="Faculty_FacultyAssignment" Member="Faculty" ThisKey="F_FacultyID" OtherKey="F_FacultyID" Type="Faculty" IsForeignKey="true" />
+      <Association Name="Section_FacultyAssignment" Member="Section" ThisKey="S_SectionID" OtherKey="S_SectionID" Type="Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Section" Member="Sections">
+    <Type Name="Section">
+      <Column Name="S_SectionID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="S_SectionName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="S_YearLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_CourseID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Section_FacultyAssignment" Member="FacultyAssignments" ThisKey="S_SectionID" OtherKey="S_SectionID" Type="FacultyAssignment" />
+      <Association Name="Section_StudentsSouthville" Member="StudentsSouthvilles" ThisKey="S_SectionID" OtherKey="S_SectionID" Type="StudentsSouthville" />
+      <Association Name="Course_Section" Member="Course" ThisKey="C_CourseID" OtherKey="C_CourseID" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentsSouthville" Member="StudentsSouthvilles">
+    <Type Name="StudentsSouthville">
+      <Column Name="S_StudentID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="S_FirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="S_LastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="U_UserID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="C_CourseID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="S_SectionID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="StudentsSouthville_EvaluationResponse" Member="EvaluationResponses" ThisKey="S_StudentID" OtherKey="S_StudentID" Type="EvaluationResponse" />
+      <Association Name="Course_StudentsSouthville" Member="Course" ThisKey="C_CourseID" OtherKey="C_CourseID" Type="Course" IsForeignKey="true" />
+      <Association Name="Section_StudentsSouthville" Member="Section" ThisKey="S_SectionID" OtherKey="S_SectionID" Type="Section" IsForeignKey="true" />
+      <Association Name="UserLogin_StudentsSouthville" Member="UserLogin" ThisKey="U_UserID" OtherKey="U_UserID" Type="UserLogin" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserLogin" Member="UserLogins">
+    <Type Name="UserLogin">
+      <Column Name="U_UserID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="U_UserName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="U_Password" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="U_Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserLogin_AdminFacultyEval" Member="AdminFacultyEvals" ThisKey="U_UserID" OtherKey="U_UserID" Type="AdminFacultyEval" />
+      <Association Name="UserLogin_StudentsSouthville" Member="StudentsSouthvilles" ThisKey="U_UserID" OtherKey="U_UserID" Type="StudentsSouthville" />
+    </Type>
+  </Table>
+</Database>

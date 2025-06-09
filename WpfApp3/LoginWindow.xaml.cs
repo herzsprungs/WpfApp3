@@ -18,14 +18,14 @@ namespace WpfApp3
     public partial class LoginWindow : Window
     {
         
-        DataClasses1DataContext db = new DataClasses1DataContext(Properties.Settings.Default.NorthVilleDatabase_by_RM_AND_JSConnectionString);
+        DataClasses2DataContext db = new DataClasses2DataContext(Properties.Settings.Default.FacultyEvaluationConnectionString);
 
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-        
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
@@ -34,40 +34,44 @@ namespace WpfApp3
                 return;
             }
 
-            var user = db.Users_tables.FirstOrDefault(u => u.Username == txtUsername.Text);
+            var user = db.UserLogins.FirstOrDefault(u => u.U_UserName == txtUsername.Text && u.U_Password == txtPassword.Password);
 
-            if (user != null && user.PasswordHash == txtPassword.Password)
+            if (user != null)
             {
                 MessageBox.Show("Login Successful!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
 
-               
-                var student = db.NorthVilleStudents
-                    .FirstOrDefault(s => s.N_Email.ToLower() == user.Username.ToLower()); 
-
-                if (student != null)
+                if (user.U_Role == "Student")
                 {
-                   
-                    App.Current.Properties["LoggedInStudentID"] = student.N_StudentID;
+                    var student = db.StudentsSouthvilles.FirstOrDefault(s => s.U_UserID == user.U_UserID);
+                    if (student != null)
+                    {
+                        App.Current.Properties["LoggedInStudentID"] = student.S_StudentID;
+                        new StudentWindowFacultyEval().Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student information not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-
-               
-                switch (user.Role)
+                else if (user.U_Role == "Admin")
                 {
-                    case "Librarian":
-                        new LibrarianWindow().Show();
-                        break;
-                    case "Clerical":
-                        new ClericalWindow().Show();
-                        break;
-                    case "Student":
-                        new StudentWindow().Show();
-                        break;
-                    default:
-                        MessageBox.Show("Unknown role. Access denied.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
+                    var admin = db.AdminFacultyEvals.FirstOrDefault(a => a.U_UserID == user.U_UserID);
+                    if (admin != null)
+                    {
+                        App.Current.Properties["LoggedInAdminID"] = admin.A_AdminID;
+                        new AdminWindowFacultyEval().Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Admin information not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-
-                this.Close();
+                else
+                {
+                    MessageBox.Show("Unknown role. Access denied.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {
@@ -75,23 +79,7 @@ namespace WpfApp3
             }
         }
 
-        
-        private void StudentTest_Click(object sender, RoutedEventArgs e)
-        {
-            new StudentWindow().Show();
-            this.Close();
-        }
 
-        private void ClericalTest_Click(object sender, RoutedEventArgs e)
-        {
-            new ClericalWindow().Show();
-            this.Close();
-        }
 
-        private void LibrarianTest_Click(object sender, RoutedEventArgs e)
-        {
-            new LibrarianWindow().Show();
-            this.Close();
-        }
     }
 }
